@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://c541mfp6js1we"]
+
+[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player.tscn" id="1_xe8py"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtkkj"]
+albedo_color = Color(0.32622296, 0.15229246, 0.12116598, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xe8py"]
+material = SubResource("StandardMaterial3D_jtkkj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sglua"]
+size = Vector3(19.977905, 0.2, 9.825439)
+
+[sub_resource type="Environment" id="Environment_xe8py"]
+background_mode = 1
+background_color = Color(0.06921938, 0.08774882, 0.13244706, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.1855557, 0.18484163, 0.48469973, 1)
+ambient_light_sky_contribution = 0.45
+ambient_light_energy = 3.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_xe8py")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037231445, 0, 0.033081055)
+shape = SubResource("BoxShape3D_sglua")
+
+[node name="Player" parent="." instance=ExtResource("1_xe8py")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8507184, 0)
+maxSpeed = 5.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xe8py")
+
+[node name="Light1" type="SpotLight3D" parent="."]
+transform = Transform3D(0.7567099, 0.456557, -0.46791655, 0, 0.71574146, 0.69836545, 0.65375084, -0.52846, 0.5416086, -8.306266, 3.1477404, 3.7417746)
+light_energy = 16.0
+spot_range = 6.9378333
+spot_angle = 36.06903
+
+[node name="Light2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.8121852, -0.407426, 0.41756308, 0, 0.71574146, 0.69836545, -0.5833995, -0.56720215, 0.5813147, 8.48153, 3.1477404, 3.7417746)
+light_energy = 16.0
+spot_range = 6.9378333
+spot_angle = 36.06903
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.9811783, 0.13485736, -0.13821273, 0, 0.71574146, 0.6983654, 0.19310428, -0.68522096, 0.7022699, -0.23544168, 3.1477404, 3.8839025)
+light_energy = 16.0
+spot_range = 6.9378333
+spot_angle = 36.06903

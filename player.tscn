@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://kwryfc7m7ss3"]
+
+[ext_resource type="Script" uid="uid://c7xewgfi5kbp0" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dwuwvoo8me7b3" path="res://assets/ph_player.png" id="2_i3pqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_i3pqv")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
+material = SubResource("StandardMaterial3D_onrkg")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sweqy"]
+radius = 0.421875
+height = 1.0456543
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_onrkg")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_i3pqv")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05038768, 0.01171577, 0)
+shape = SubResource("CapsuleShape3D_sweqy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8403302, 0.5420749, 0, -0.5420749, 0.8403302, 0, 1.706959, 2.8119984)
