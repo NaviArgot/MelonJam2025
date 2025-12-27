@@ -17,7 +17,7 @@ material = SubResource("StandardMaterial3D_8xwfw")
 radius = 0.39182502
 
 [node name="Weapon" type="StaticBody3D"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_o2wld")
 

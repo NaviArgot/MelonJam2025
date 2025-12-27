@@ -18,9 +18,16 @@ func disable() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enabled = false
-	
+
+
+func _physics_process(delta: float) -> void:
+	if enabled:
+		visible = true
+		$Collision.disabled = false
+	else:
+		visible = false
+		$Collision.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if enabled: visible = true
-	else: visible = false
+	pass

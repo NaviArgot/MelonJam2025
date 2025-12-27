@@ -56,8 +56,7 @@ func _ready() -> void:
 			sprites.append(child)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match state:
 		STATE.IDLE:
 			enableAnim("idle")
@@ -68,3 +67,8 @@ func _process(delta: float) -> void:
 	computeFacingTarget()
 	receiveInput()
 	move_and_collide(speed * delta)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
