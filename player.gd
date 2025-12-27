@@ -1,7 +1,11 @@
 class_name Player
 extends CharacterBody3D
 
+enum DIR {UP, DOWN, LEFT, RIGHT}
+
 @export var maxSpeed: float = 1.0
+
+var facing: Vector3 = Vector3(0.0, 0.0, -1.0)
 var speed: Vector3 = Vector3(0.0, 0.0, 0.0)
 
 func receiveInput () -> void:
@@ -15,6 +19,20 @@ func receiveInput () -> void:
 		speed.x = maxSpeed
 	if Input.is_action_pressed("left"):
 		speed.x = -maxSpeed
+	if Input.is_action_pressed("attack"):
+		$Weapon.attack(facing)
+	else:
+		$Weapon.disable()
+
+func computeFacingTarget() -> void:
+	var mousePos = get_viewport().get_mouse_position()
+	var center = get_viewport().get_visible_rect().size/2
+	var target = mousePos - center
+	facing.x = target.x
+	facing.y = 0.0
+	facing.z = target.y
+	facing = facing.normalized()
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +41,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	computeFacingTarget()
 	receiveInput()
 	move_and_collide(speed * delta)
-	print(position)

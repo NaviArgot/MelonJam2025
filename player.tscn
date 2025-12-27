@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://kwryfc7m7ss3"]
+[gd_scene load_steps=7 format=3 uid="uid://kwryfc7m7ss3"]
 
 [ext_resource type="Script" uid="uid://c7xewgfi5kbp0" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dwuwvoo8me7b3" path="res://assets/ph_player.png" id="2_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://cqxnny5n3w2vi" path="res://weapon.tscn" id="3_i3pqv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onrkg"]
 transparency = 2
@@ -24,7 +25,12 @@ mesh = SubResource("QuadMesh_i3pqv")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05038768, 0.01171577, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_sweqy")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8403302, 0.5420749, 0, -0.5420749, 0.8403302, 0, 1.706959, 2.8119984)
+transform = Transform3D(1, 0, 0, 0, 0.8403302, 0.5420749, 0, -0.5420749, 0.8403302, 0, 2.444, 3.435833)
+
+[node name="Weapon" parent="." instance=ExtResource("3_i3pqv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+distance = 0.8
