@@ -1,16 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqxnny5n3w2vi"]
 
 [ext_resource type="Script" uid="uid://qh1i0ekhnlio" path="res://weapon.gd" id="1_o2wld"]
-[ext_resource type="Texture2D" uid="uid://cxwcjjsrtgcvq" path="res://assets/ph_sword.png" id="1_swcir"]
+[ext_resource type="Texture2D" uid="uid://dsl3x3fhxdfmx" path="res://assets/foam_sword.png" id="2_o2wld"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o2wld"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xwfw"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("1_swcir")
+albedo_texture = ExtResource("2_o2wld")
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8xwfw"]
-material = SubResource("StandardMaterial3D_o2wld")
+material = SubResource("StandardMaterial3D_8xwfw")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8xwfw"]
 radius = 0.39182502
