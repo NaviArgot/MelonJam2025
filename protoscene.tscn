@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c541mfp6js1we"]
+[gd_scene load_steps=8 format=3 uid="uid://c541mfp6js1we"]
 
-[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player.tscn" id="1_xe8py"]
+[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="1_xe8py"]
+[ext_resource type="PackedScene" uid="uid://1txo3m0mhrt6" path="res://proto_enemy.tscn" id="2_sglua"]
+[ext_resource type="PackedScene" uid="uid://bv6pi52wead8q" path="res://bullet.tscn" id="3_v00bh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtkkj"]
 albedo_color = Color(0.32622296, 0.15229246, 0.12116598, 1)
@@ -35,6 +37,9 @@ shape = SubResource("BoxShape3D_sglua")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7021018, 0)
 maxSpeed = 5.0
 
+[node name="ProtoEnemy" parent="." instance=ExtResource("2_sglua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7021018, 0)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xe8py")
 
@@ -55,3 +60,7 @@ transform = Transform3D(0.9811783, 0.13485736, -0.13821273, 0, 0.71574146, 0.698
 light_energy = 16.0
 spot_range = 6.9378333
 spot_angle = 36.06903
+
+[node name="Bullet" parent="." instance=ExtResource("3_v00bh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+speed = 5.0
