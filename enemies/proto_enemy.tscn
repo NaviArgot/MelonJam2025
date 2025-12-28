@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://1txo3m0mhrt6"]
+
+[ext_resource type="Script" uid="uid://dhieed4ibw5jt" path="res://enemies/proto_enemy.gd" id="1_baixe"]
+[ext_resource type="Texture2D" uid="uid://c3uivvnys10yy" path="res://assets/ph_enemy.png" id="1_k7lo4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_baixe"]
+radius = 0.42019403
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fuoum"]
+radius = 0.5547642
+
+[node name="ProtoEnemy" type="CharacterBody3D"]
+script = ExtResource("1_baixe")
+
+[node name="Sprite" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_k7lo4")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("SphereShape3D_baixe")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_fuoum")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5504307, 0)

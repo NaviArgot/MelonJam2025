@@ -28,7 +28,12 @@ func receiveInput () -> void:
 	if Input.is_action_just_pressed("weapon_change"):
 		weapons[currWeapon].disableWeapon()
 		currWeapon = (currWeapon + 1) % weapons.size()
-		
+	if Input.is_action_just_pressed("roll"):
+		DialogueSystem.showDialogues([
+			"Hello",
+			"This is the dialogue system",
+			"There are multiple dialogues"
+		])
 
 func computeFacingTarget() -> void:
 	var mousePos = get_viewport().get_mouse_position()

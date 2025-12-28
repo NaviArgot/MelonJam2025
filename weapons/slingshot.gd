@@ -3,7 +3,7 @@ class_name Slingshot extends Weapon
 @export var cooldownTime : float = 1.0
 @export var bulletSpeed : float = 10.0
 
-var bulletScene = preload("res://bullet.tscn")
+var bulletScene = preload("res://bullets/bullet.tscn")
 var cooldownCount : float = 0.0
 
 func spawnBullet(dir: Vector3):

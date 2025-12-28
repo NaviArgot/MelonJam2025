@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbtnw7m2vpvxw"]
+
+[ext_resource type="Script" uid="uid://dmmoj0ojw6ib1" path="res://shared/dialogues.gd" id="1_8rph6"]
+[ext_resource type="Texture2D" uid="uid://2mcwvl3uxqnx" path="res://assets/textures/dialogue_box.png" id="1_g86h6"]
+
+[node name="Dialogues" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rph6")
+
+[node name="DialogueBox" type="AspectRatioContainer" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.75600004
+anchor_right = 0.5
+anchor_bottom = 0.75600004
+offset_left = -163.0
+offset_top = -35.160004
+offset_right = 163.0
+offset_bottom = 34.839996
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 4.6
+stretch_mode = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueBox"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_g86h6")
+region_rect = Rect2(0, 0, 31.228493, 32)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 7
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="DialogueBox/MarginContainer"]
+texture_filter = 2
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Test dsfsdf"
+autowrap_mode = 2
