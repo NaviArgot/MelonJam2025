@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+signal death
+
 var health: float = 10.0
 var maxSpeed = 5.2
 
@@ -36,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		spawnBullets(8, float(bulletAngle)/100 * TAU)
 	
 	if health < 0.0:
-		queue_free()
+		death.emit()
 	move_and_slide()
 
 func _onDamageAreaEntered(area: Area3D) -> void:

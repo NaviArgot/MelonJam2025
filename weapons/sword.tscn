@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://qh1i0ekhnlio" path="res://weapons/sword.gd" id="1_o2wld"]
 [ext_resource type="Texture2D" uid="uid://dsl3x3fhxdfmx" path="res://assets/foam_sword.png" id="2_o2wld"]
-[ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://shared/attack_area.gd" id="3_8xwfw"]
+[ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://shared/areas/attack_area.gd" id="3_8xwfw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xwfw"]
 transparency = 2

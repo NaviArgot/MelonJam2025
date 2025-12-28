@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MelonJam2025"
-run/main_scene="uid://c541mfp6js1we"
+run/main_scene="uid://doqit6tulapl0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
