@@ -1,6 +1,11 @@
 class_name Player
 extends CharacterBody3D
 
+var weaponScenes : Array[PackedScene] = [
+	preload("res://weapons/sword.tscn"),
+	preload("res://weapons/slingshot.tscn")
+]
+
 enum STATE {IDLE, WALKING, ATTACKING}
 enum TURNING {LEFT, RIGHT}
 
@@ -12,12 +17,18 @@ var health : float
 var facing: Vector3 = Vector3(0.0, 0.0, -1.0)
 var state: STATE = STATE.IDLE
 var sprites: Array[Sprite3D] = []
+var weapons : Array[Weapon] = []
+var currWeapon : int  = 0
 
 func receiveInput () -> void:
 	if Input.is_action_pressed("attack"):
-		$Weapon.enableWeapon(facing)
+		weapons[currWeapon].enableWeapon(facing)
 	else:
-		$Weapon.disableWeapon()
+		weapons[currWeapon].disableWeapon()
+	if Input.is_action_just_pressed("weapon_change"):
+		weapons[currWeapon].disableWeapon()
+		currWeapon = (currWeapon + 1) % weapons.size()
+		
 
 func computeFacingTarget() -> void:
 	var mousePos = get_viewport().get_mouse_position()
@@ -45,6 +56,12 @@ func _ready() -> void:
 	for child in $Animations.get_children():
 		if child.is_class("Sprite3D"):
 			sprites.append(child)
+	for scene in weaponScenes:
+		var weapon = scene.instantiate()
+		weapon.scale = Vector3(0.6, 0.6, 0.6)
+		weapon.distance = 0.8
+		add_child(weapon)
+		weapons.append(weapon)
 	$DamageArea.area_entered.connect(_onDamageAreaEntered)
 
 
@@ -91,7 +108,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _onDamageAreaEntered(area : Area3D) -> void:
-	print("MIAU")
 	if "ATTACKAREA" in area:
 		takeDamage(area.damage)
 	

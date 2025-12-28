@@ -10,3 +10,6 @@
 func faceTowards (direction: Vector3) -> void:
 	position = (direction * distance)
 	$Mesh.rotation.y = -atan2(direction.z, direction.x) + deg_to_rad(angle)
+
+func _ready() -> void:
+	disableWeapon()

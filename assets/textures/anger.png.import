@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0talc0gkmr11"
-path.s3tc="res://.godot/imported/ph_ranged.png-7d5cd075a945ced98a6f5cabd1c4d43d.s3tc.ctex"
+uid="uid://rgi5elnwjfcc"
+path.s3tc="res://.godot/imported/anger.png-7a0deab037f53a1886726b7c39ed1976.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/ph_ranged.png"
-dest_files=["res://.godot/imported/ph_ranged.png-7d5cd075a945ced98a6f5cabd1c4d43d.s3tc.ctex"]
+source_file="res://assets/textures/anger.png"
+dest_files=["res://.godot/imported/anger.png-7a0deab037f53a1886726b7c39ed1976.s3tc.ctex"]
 
 [params]
 

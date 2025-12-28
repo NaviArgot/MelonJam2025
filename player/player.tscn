@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://kwryfc7m7ss3"]
+[gd_scene load_steps=10 format=3 uid="uid://kwryfc7m7ss3"]
 
 [ext_resource type="Script" uid="uid://c7xewgfi5kbp0" path="res://player/player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cqxnny5n3w2vi" path="res://weapons/sword.tscn" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://bivld73578xqf" path="res://assets/player_run_anim_Sheet.png" id="4_hqtel"]
 [ext_resource type="Texture2D" uid="uid://bfu16i0k5keyh" path="res://assets/player_idle_anim_Sheet.png" id="5_sweqy"]
 
@@ -169,11 +168,6 @@ shaded = true
 texture_filter = 0
 texture = ExtResource("5_sweqy")
 hframes = 3
-
-[node name="Weapon" parent="." instance=ExtResource("3_i3pqv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
-visible = false
-distance = 0.8
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7917919, 0)

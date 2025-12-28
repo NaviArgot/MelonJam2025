@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0talc0gkmr11"
-path.s3tc="res://.godot/imported/ph_ranged.png-7d5cd075a945ced98a6f5cabd1c4d43d.s3tc.ctex"
+uid="uid://dgkovr4qnjvhw"
+path.s3tc="res://.godot/imported/billboard_joy.png-2a05c2c820ed486f78ccdf8eecc9114d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9fea008e38f6988b275cbf89919792b3"
+}
 
 [deps]
 
-source_file="res://assets/ph_ranged.png"
-dest_files=["res://.godot/imported/ph_ranged.png-7d5cd075a945ced98a6f5cabd1c4d43d.s3tc.ctex"]
+source_file="res://assets/models/billboard_joy.png"
+dest_files=["res://.godot/imported/billboard_joy.png-2a05c2c820ed486f78ccdf8eecc9114d.s3tc.ctex"]
 
 [params]
 
