@@ -10,7 +10,6 @@ var facing: Vector3 = Vector3(0.0, 0.0, -1.0)
 var speed: Vector3 = Vector3(0.0, 0.0, 0.0)
 var state: STATE = STATE.IDLE
 var sprites: Array[Sprite3D] = []
-var turningTween: Tween = null
 
 func receiveInput () -> void:
 	speed.x = 0.0
@@ -46,16 +45,18 @@ func computeFacingTarget() -> void:
 
 func enableAnim(animation: String) -> void:
 	if $AnimationPlayer.current_animation != animation:
-		$AnimationPlayer.play("RESET")
+		for sprite in sprites:
+			sprite.visible = false
 	$AnimationPlayer.play(animation)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	for child in $Animations.get_children():
+		if child.is_class("Sprite3D"):
+			sprites.append(child)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match state:
 		STATE.IDLE:
 			enableAnim("idle")
@@ -66,3 +67,7 @@ func _process(delta: float) -> void:
 	computeFacingTarget()
 	receiveInput()
 	move_and_collide(speed * delta)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

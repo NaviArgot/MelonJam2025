@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn1d7cpoyias7"]
+
+[ext_resource type="Script" uid="uid://ct537f46cg57d" path="res://weapons/slingshot.gd" id="1_4w2j0"]
+[ext_resource type="Texture2D" uid="uid://d0talc0gkmr11" path="res://assets/ph_ranged.png" id="2_4lsmj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xymiu"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_4lsmj")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pkrri"]
+material = SubResource("StandardMaterial3D_xymiu")
+
+[node name="Slingshot" type="Node3D"]
+script = ExtResource("1_4w2j0")
+distance = 0.8
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_pkrri")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv6pi52wead8q"]
+
+[ext_resource type="Script" uid="uid://4wxtcct3xboq" path="res://bullet.gd" id="1_t4vbm"]
+[ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://attack_area.gd" id="2_2b2rl"]
+[ext_resource type="Texture2D" uid="uid://df5qxx5246kjh" path="res://assets/ph_bullet.png" id="3_b7duk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2bd8"]
+radius = 0.26479352
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_t4vbm")
+
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_2b2rl")
+metadata/_custom_type_script = "uid://dj60wt6hbji4a"
+
+[node name="Collision" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_t2bd8")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_b7duk")

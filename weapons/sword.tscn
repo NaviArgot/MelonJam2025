@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqxnny5n3w2vi"]
+[gd_scene load_steps=7 format=3 uid="uid://cqxnny5n3w2vi"]
 
-[ext_resource type="Script" uid="uid://qh1i0ekhnlio" path="res://weapon.gd" id="1_o2wld"]
+[ext_resource type="Script" uid="uid://qh1i0ekhnlio" path="res://weapons/sword.gd" id="1_o2wld"]
 [ext_resource type="Texture2D" uid="uid://dsl3x3fhxdfmx" path="res://assets/foam_sword.png" id="2_o2wld"]
+[ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://attack_area.gd" id="3_8xwfw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xwfw"]
 transparency = 2
@@ -14,16 +15,20 @@ texture_filter = 0
 material = SubResource("StandardMaterial3D_8xwfw")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8xwfw"]
-radius = 0.39182502
+radius = 0.9171943
 
-[node name="Weapon" type="StaticBody3D"]
-collision_layer = 4
-collision_mask = 2
+[node name="Weapon" type="Node3D"]
 script = ExtResource("1_o2wld")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_8xwfw")
+skeleton = NodePath("../..")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033054173, 0, -0.07579866)
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_8xwfw")
+metadata/_custom_type_script = "uid://dj60wt6hbji4a"
+
+[node name="Collision" type="CollisionShape3D" parent="AttackArea"]
 shape = SubResource("SphereShape3D_8xwfw")
