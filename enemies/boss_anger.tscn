@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://stt17gayarjd"]
+
+[ext_resource type="Texture2D" uid="uid://cmq8se2h7pc2h" path="res://assets/textures/angry_mask.png" id="1_2nr3q"]
+[ext_resource type="Script" uid="uid://0ct2lbkg1yxj" path="res://enemies/boss_anger.gd" id="1_4d08u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d08u"]
+size = Vector3(1.593689, 1.7593384, 0.36224365)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nr3q"]
+size = Vector3(2.0043945, 2.0930634, 1.5635376)
+
+[node name="BossAnger" type="CharacterBody3D"]
+script = ExtResource("1_4d08u")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_2nr3q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03817749, -0.013336182, -0.024993896)
+shape = SubResource("BoxShape3D_4d08u")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034179688, 0.06970978, -0.04727173)
+shape = SubResource("BoxShape3D_2nr3q")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5796027, 0)

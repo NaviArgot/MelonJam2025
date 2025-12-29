@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycgkpc4pqc03"
-path.s3tc="res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"
+uid="uid://qac8o2ssg8f6"
+path.s3tc="res://.godot/imported/boss_joy_Joy_mask.png-3e667e4a1bc60162b6f437937e399652.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9040e3f565f7811caa80095c20aca75e"
+}
 
 [deps]
 
-source_file="res://assets/textures/joy.png"
-dest_files=["res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"]
+source_file="res://assets/models/boss_joy_Joy_mask.png"
+dest_files=["res://.godot/imported/boss_joy_Joy_mask.png-3e667e4a1bc60162b6f437937e399652.s3tc.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends RefCounted
+extends Node3D
 
 var flags : Dictionary[String, bool] = {
 	"ACCEPTED_JOY" : false,
@@ -7,14 +7,15 @@ var flags : Dictionary[String, bool] = {
 	"ACHIEVED_UNIFICATION" : false,
 }
 
-var position: Vector3 = Vector3(0.0, 0.0, 0.0)
+var maxHealth : float = 50.0
+var playerPos: Vector3 = Vector3(0.0, 0.0, 0.0)
 var canMove : bool = true
 
-func updatePosition(pos : Vector3):
-	position = pos
+func setPosition(pos : Vector3):
+	playerPos = pos
 
 func getPosition() -> Vector3:
-	return position
+	return playerPos
 
 func hasAccepted(feeling : String) -> bool:
 	var flag := false

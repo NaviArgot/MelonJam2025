@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycgkpc4pqc03"
-path.s3tc="res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"
+uid="uid://b5jbao2neiu"
+path.s3tc="res://.godot/imported/boss_joy_wood.png-7f93eb7ac44a3a5d78045ebb2fdc36f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "7e12aa310fd677382dca23a2c4cbe4a0"
+}
 
 [deps]
 
-source_file="res://assets/textures/joy.png"
-dest_files=["res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"]
+source_file="res://assets/models/boss_joy_wood.png"
+dest_files=["res://.godot/imported/boss_joy_wood.png-7f93eb7ac44a3a5d78045ebb2fdc36f8.s3tc.ctex"]
 
 [params]
 

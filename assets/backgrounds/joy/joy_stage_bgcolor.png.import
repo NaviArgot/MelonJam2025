@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycgkpc4pqc03"
-path.s3tc="res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"
+uid="uid://c7v4regyopn6f"
+path.s3tc="res://.godot/imported/joy_stage_bgcolor.png-a3d86898482a98f271c52925244ade61.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/joy.png"
-dest_files=["res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"]
+source_file="res://assets/backgrounds/joy/joy_stage_bgcolor.png"
+dest_files=["res://.godot/imported/joy_stage_bgcolor.png-a3d86898482a98f271c52925244ade61.s3tc.ctex"]
 
 [params]
 

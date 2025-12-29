@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycgkpc4pqc03"
-path.s3tc="res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"
+uid="uid://bojklss34n5x8"
+path.s3tc="res://.godot/imported/front_trees.png-d9126963c48d845855d2a364dbcc2a7b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/joy.png"
-dest_files=["res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"]
+source_file="res://assets/backgrounds/joy/front_trees.png"
+dest_files=["res://.godot/imported/front_trees.png-d9126963c48d845855d2a364dbcc2a7b.s3tc.ctex"]
 
 [params]
 

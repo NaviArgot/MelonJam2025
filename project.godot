@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueSystem="*res://shared/dialogues.tscn"
+PlayerManager="*res://shared/player_manager.gd"
+Transitions="*res://shared/transitions.tscn"
 
 [display]
 

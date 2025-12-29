@@ -8,10 +8,6 @@
 radius = 0.26611328
 height = 0.97032166
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqtel"]
-radius = 0.234375
-height = 0.8058777
-
 [sub_resource type="Animation" id="Animation_sweqy"]
 length = 0.001
 tracks/0/type = "value"
@@ -129,6 +125,9 @@ _data = {
 &"run": SubResource("Animation_hqtel")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_g1dw6"]
+radius = 0.39857334
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_onrkg")
 
@@ -136,16 +135,9 @@ script = ExtResource("1_onrkg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011350453, 0.04938209, 0)
 shape = SubResource("CapsuleShape3D_sweqy")
 
-[node name="DamageArea" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 4
-
-[node name="Collision" type="CollisionShape3D" parent="DamageArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.070498735, 0)
-shape = SubResource("CapsuleShape3D_hqtel")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.8403302, 0.5420749, 0, -0.5420749, 0.8403302, 0, 2.444, 3.435833)
+size = 5.106416
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -172,3 +164,11 @@ hframes = 3
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7917919, 0)
 text = "State"
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0045776367, 0.07421875, -0.026428223)
+shape = SubResource("SphereShape3D_g1dw6")

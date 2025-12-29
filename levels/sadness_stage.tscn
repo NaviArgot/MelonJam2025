@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxts5txqdhaoq"]
+
+[ext_resource type="Script" uid="uid://yrov1gsmrjyk" path="res://levels/anger_stage.gd" id="1_ii1wi"]
+[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_10qj4"]
+[ext_resource type="PackedScene" uid="uid://stt17gayarjd" path="res://enemies/boss_anger.tscn" id="3_00xng"]
+[ext_resource type="PackedScene" uid="uid://dqutjwv8lup7c" path="res://levels/sadness_scenario.tscn" id="4_ii1wi"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ii1wi")
+
+[node name="Player" parent="." instance=ExtResource("2_10qj4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9602399, 4.910836)
+maxSpeed = 5.0
+
+[node name="Boss" parent="." instance=ExtResource("3_00xng")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3395815, -15.425249)
+
+[node name="Scenario" parent="." instance=ExtResource("4_ii1wi")]

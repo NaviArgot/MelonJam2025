@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ycgkpc4pqc03"
-path.s3tc="res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"
+uid="uid://cmq8se2h7pc2h"
+path.s3tc="res://.godot/imported/angry_mask.png-a3a9fa57305407ceb9936371a46e9549.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/joy.png"
-dest_files=["res://.godot/imported/joy.png-9b69bc23a731fcbd226f995dbda6930e.s3tc.ctex"]
+source_file="res://assets/textures/angry_mask.png"
+dest_files=["res://.godot/imported/angry_mask.png-a3a9fa57305407ceb9936371a46e9549.s3tc.ctex"]
 
 [params]
 

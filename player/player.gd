@@ -19,6 +19,7 @@ var state: STATE = STATE.IDLE
 var sprites: Array[Sprite3D] = []
 var weapons : Array[Weapon] = []
 var currWeapon : int  = 0
+var onScene : bool = false
 
 func receiveInput () -> void:
 	if Input.is_action_pressed("attack"):
@@ -57,6 +58,7 @@ func takeDamage(damage : float):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	onScene = true
 	health = maxHealth
 	for child in $Animations.get_children():
 		if child.is_class("Sprite3D"):
@@ -107,12 +109,14 @@ func _physics_process(delta: float) -> void:
 	computeFacingTarget()
 	receiveInput()
 	move_and_slide()
+	if onScene:
+		PlayerManager.setPosition(global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _onDamageAreaEntered(area : Area3D) -> void:
-	if "ATTACKAREA" in area:
+	if "ATTACKAREA" in area and area.originator != self:
 		takeDamage(area.damage)
 	
