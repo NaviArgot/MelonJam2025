@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://kwryfc7m7ss3"]
+[gd_scene load_steps=11 format=3 uid="uid://kwryfc7m7ss3"]
 
 [ext_resource type="Script" uid="uid://c7xewgfi5kbp0" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bivld73578xqf" path="res://assets/player_run_anim_Sheet.png" id="4_hqtel"]
+[ext_resource type="AudioStream" uid="uid://cy8k8r6tpliqw" path="res://assets/sounds/Jump.wav" id="4_yw30f"]
 [ext_resource type="Texture2D" uid="uid://bfu16i0k5keyh" path="res://assets/player_idle_anim_Sheet.png" id="5_sweqy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sweqy"]
@@ -157,6 +158,7 @@ region_rect = Rect2(4, 0, 120, 32)
 [node name="Idle" type="Sprite3D" parent="Animations"]
 pixel_size = 0.03
 shaded = true
+no_depth_test = true
 texture_filter = 0
 texture = ExtResource("5_sweqy")
 hframes = 3
@@ -172,3 +174,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0045776367, 0.07421875, -0.026428223)
 shape = SubResource("SphereShape3D_g1dw6")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yw30f")

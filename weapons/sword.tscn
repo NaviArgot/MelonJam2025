@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cqxnny5n3w2vi"]
+[gd_scene load_steps=8 format=3 uid="uid://cqxnny5n3w2vi"]
 
 [ext_resource type="Script" uid="uid://qh1i0ekhnlio" path="res://weapons/sword.gd" id="1_o2wld"]
 [ext_resource type="Texture2D" uid="uid://dsl3x3fhxdfmx" path="res://assets/foam_sword.png" id="2_o2wld"]
 [ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://shared/areas/attack_area.gd" id="3_8xwfw"]
+[ext_resource type="AudioStream" uid="uid://kpsoqjelc4pv" path="res://assets/sounds/Sword.wav" id="4_5ogyc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xwfw"]
 transparency = 2
@@ -32,3 +33,6 @@ metadata/_custom_type_script = "uid://dj60wt6hbji4a"
 
 [node name="Collision" type="CollisionShape3D" parent="AttackArea"]
 shape = SubResource("SphereShape3D_8xwfw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5ogyc")

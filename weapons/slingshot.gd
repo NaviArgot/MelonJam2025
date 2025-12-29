@@ -12,13 +12,14 @@ func spawnBullet(dir: Vector3):
 	bullet.direction = dir
 	bullet.speed = bulletSpeed
 	bullet.damage = damage
-	bullet.originator = self
-	get_tree().root.add_child(bullet)
+	bullet.originator = originator
+	get_tree().root.get_children()[-1].add_child(bullet)
 
 func enableWeapon(facing : Vector3) -> void:
 	visible = true
 	faceTowards(facing)
 	if cooldownCount <= 0.0:
+		$AudioStreamPlayer.play()
 		cooldownCount = cooldownTime
 		spawnBullet(facing)
 

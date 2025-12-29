@@ -13,7 +13,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body : Node) -> void:
-	print("HOMIMI ENTERED: ", body.name)
 	if body.name == "Player":
 		Transitions.fadeOut()
 		await Transitions.transition_finished

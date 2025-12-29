@@ -1,5 +1,6 @@
 @abstract class_name Weapon extends Node3D
 
+var originator = null
 @export var angle: float = 0.0
 @export var distance: float = 0.0
 @export var damage: float = 1.0

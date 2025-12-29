@@ -13,13 +13,15 @@ func disableWeapon() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enabled = false
-	$AttackArea.initialize(5.0, self)
+	$AttackArea.initialize(5.0, originator)
 	$AttackArea.body_entered.connect(_on_body_entered)
 	$AttackArea.area_entered.connect(_on_area_entered)
 
 
 func _physics_process(delta: float) -> void:
 	if enabled:
+		if not $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play()
 		visible = true
 		$AttackArea/Collision.disabled = false
 	else:

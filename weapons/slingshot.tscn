@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn1d7cpoyias7"]
+[gd_scene load_steps=6 format=3 uid="uid://dn1d7cpoyias7"]
 
 [ext_resource type="Script" uid="uid://ct537f46cg57d" path="res://weapons/slingshot.gd" id="1_4w2j0"]
 [ext_resource type="Texture2D" uid="uid://d0talc0gkmr11" path="res://assets/ph_ranged.png" id="2_4lsmj"]
+[ext_resource type="AudioStream" uid="uid://d31clo8dsqnhc" path="res://assets/sounds/Shoot.wav" id="3_4lsmj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xymiu"]
 transparency = 2
@@ -19,3 +20,6 @@ distance = 0.8
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_pkrri")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4lsmj")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cugrtxl3x2h4c"]
+
+[ext_resource type="Script" uid="uid://c75ngjyxbogm2" path="res://bullets/orbiting_bullets.gd" id="1_qmar0"]
+
+[node name="OrbitingBullets" type="Node3D"]
+script = ExtResource("1_qmar0")

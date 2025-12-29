@@ -1,12 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c541mfp6js1we"]
+[gd_scene load_steps=18 format=3 uid="uid://c541mfp6js1we"]
 
+[ext_resource type="Script" uid="uid://bfwe3i3y2256" path="res://levels/protoscene.gd" id="1_by63k"]
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="1_iar0x"]
-[ext_resource type="PackedScene" uid="uid://1txo3m0mhrt6" path="res://enemies/proto_enemy.tscn" id="2_4aumq"]
+[ext_resource type="MeshLibrary" uid="uid://dv8uklvjyigq0" path="res://assets/meshlibs/entrance.meshlib" id="3_8jnmb"]
 [ext_resource type="ArrayMesh" uid="uid://dl2kvlb7dd46e" path="res://assets/models/meshes/billboard.tres" id="4_bobsq"]
-[ext_resource type="ArrayMesh" uid="uid://de6h81ufmks2n" path="res://assets/models/entrance.tres" id="5_by63k"]
 [ext_resource type="ArrayMesh" uid="uid://btkcew2v6ul8f" path="res://assets/models/meshes/hub.tres" id="6_hnf0d"]
 [ext_resource type="Script" uid="uid://dm6mfdijr7gjc" path="res://shared/areas/level_start_area.gd" id="7_4aumq"]
-[ext_resource type="AudioStream" uid="uid://dk3ve2n1yoq6x" path="res://assets/music/intro.mp3" id="8_8jnmb"]
 [ext_resource type="Texture2D" uid="uid://04ajusgxmh3" path="res://assets/textures/sadness.png" id="8_bobsq"]
 [ext_resource type="Texture2D" uid="uid://dgkovr4qnjvhw" path="res://assets/models/billboard_joy.png" id="9_by63k"]
 
@@ -39,7 +38,14 @@ texture_filter = 0
 albedo_texture = ExtResource("9_by63k")
 texture_filter = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bobsq"]
+size = Vector3(5.2407837, 10.534895, 1.2353516)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bobsq"]
+height = 5.6379395
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_by63k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -51,32 +57,12 @@ shape = SubResource("ConcavePolygonShape3D_ias2m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8524404, 0.7021018, 0)
 maxSpeed = 5.0
 
-[node name="ProtoEnemy" parent="." instance=ExtResource("2_4aumq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.656555, 0.7021018, 7.700939)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xe8py")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.3010845, 0, -5)
-visible = false
-mesh = ExtResource("5_by63k")
 
 [node name="Orbo" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.897945, 0, -6.9020824)
 mesh = ExtResource("6_hnf0d")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8318185, 0.5550477, 0, -0.5550477, 0.8318185, 0, 11.329806, 14.921861)
-light_energy = 0.333
-
-[node name="ProtoEnemy2" parent="." instance=ExtResource("2_4aumq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8342896, 5.286766, -10.920281)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_8jnmb")
-volume_db = -8.0
-autoplay = true
 
 [node name="AngerEntrance" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9003854, 0.38659525, -7.285528)
@@ -158,3 +144,41 @@ light_energy = 5.889
 spot_range = 16.8879
 spot_angle = 18.400835
 spot_angle_attenuation = 0.064704224
+
+[node name="Walls" type="GridMap" parent="."]
+mesh_library = ExtResource("3_8jnmb")
+data = {
+"cells": PackedInt32Array(65526, 7, 1441797, 65527, 7, 1441797, 65528, 7, 1441797, 65529, 7, 1441797, 65530, 7, 1441797, 65531, 7, 1441797, 65532, 7, 1441797, 65533, 7, 1441797, 65534, 7, 1441797, 65535, 7, 1441797, 0, 7, 1441797, 1, 7, 1441797, 2, 7, 1441797, 3, 7, 1441797, 4, 7, 1441797, 131062, 7, 1441797, 131063, 7, 1441797, 131064, 7, 1441797, 131065, 7, 1441797, 131066, 7, 1441797, 131067, 7, 1441797, 131068, 7, 1441797, 131069, 7, 1441797, 131070, 7, 1441797, 131071, 7, 1441797, 65536, 7, 1441797, 65537, 7, 1441797, 65538, 7, 1441797, 65539, 7, 1441797, 65540, 7, 1441797, 196598, 7, 1441797, 196599, 7, 1441797, 196600, 7, 1441797, 196601, 7, 1441797, 196602, 7, 1441797, 196603, 7, 1441797, 196604, 7, 1441797, 196605, 7, 1441797, 196606, 7, 1441797, 196607, 7, 1441797, 131072, 7, 1441797, 131073, 7, 1441797, 131074, 7, 1441797, 131075, 7, 1441797, 131076, 7, 1441797, 262134, 7, 1441797, 262135, 7, 1441797, 262136, 7, 1441797, 262137, 7, 1441797, 262138, 7, 1441797, 262139, 7, 1441797, 262140, 7, 1441797, 262141, 7, 1441797, 262142, 7, 1441797, 262143, 7, 1441797, 196608, 7, 1441797, 196609, 7, 1441797, 196610, 7, 1441797, 196611, 7, 1441797, 196612, 7, 1441797, 327670, 7, 1441797, 327671, 7, 1441797, 327672, 7, 1441797, 327673, 7, 1441797, 327674, 7, 1441797, 327675, 7, 1441797, 327676, 7, 1441797, 327677, 7, 1441797, 327678, 7, 1441797, 327679, 7, 1441797, 262144, 7, 1441797, 262145, 7, 1441797, 262146, 7, 1441797, 262147, 7, 1441797, 262148, 7, 1441797)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.14960438, 0.9887459, 0, -0.9887459, 0.14960438, 0, 15.778595, 9.129843)
+light_color = Color(0.6610811, 0.66108096, 0.66108096, 1)
+light_energy = 0.322
+
+[node name="Ramps" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramps"]
+transform = Transform3D(1, 0, 0, 0, 0.6533017, 0.7570977, 0, -0.7570977, 0.6533017, -18.079803, 0.74837685, -2.0212727)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramps/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9991035, 0.042329222, 0, -0.042329222, 0.9991035, 0.19906616, 0.8711059, -0.005923331)
+shape = SubResource("BoxShape3D_bobsq")
+debug_color = Color(2.1658838e-07, 0.23340449, 0.27829915, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ramps/StaticBody3D"]
+transform = Transform3D(-4.371139e-08, -0.9999753, -0.0070338845, 0.7570977, -0.0045952667, 0.65328574, -0.6533017, -0.005325319, 0.75707775, -0.16263199, 6.2067966, -0.19994766)
+shape = SubResource("CylinderShape3D_bobsq")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Ramps"]
+transform = Transform3D(1, 0, 0, 0, 0.60213566, 0.7983939, 0, -0.7983939, 0.60213566, 8.289319, 1.0241522, -1.6599066)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ramps/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.9991035, 0.042329222, 0, -0.042329222, 0.9991035, 0.19906616, 0.8711059, -0.005923331)
+shape = SubResource("BoxShape3D_bobsq")
+debug_color = Color(2.1658838e-07, 0.23340449, 0.27829915, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Ramps/StaticBody3D2"]
+transform = Transform3D(-4.371139e-08, -0.9999753, -0.0070338845, 0.7570977, -0.0045952667, 0.65328574, -0.6533017, -0.005325319, 0.75707775, -0.16263199, 6.2067966, -0.19994766)
+shape = SubResource("CylinderShape3D_bobsq")

@@ -20,6 +20,7 @@ var sprites: Array[Sprite3D] = []
 var weapons : Array[Weapon] = []
 var currWeapon : int  = 0
 var onScene : bool = false
+var executingDying : bool  =false
 
 func receiveInput () -> void:
 	if Input.is_action_pressed("attack"):
@@ -29,12 +30,7 @@ func receiveInput () -> void:
 	if Input.is_action_just_pressed("weapon_change"):
 		weapons[currWeapon].disableWeapon()
 		currWeapon = (currWeapon + 1) % weapons.size()
-	if Input.is_action_just_pressed("roll"):
-		DialogueSystem.showDialogues([
-			"Hello",
-			"This is the dialogue system",
-			"There are multiple dialogues"
-		])
+		
 
 func computeFacingTarget() -> void:
 	var mousePos = get_viewport().get_mouse_position()
@@ -56,10 +52,19 @@ func takeDamage(damage : float):
 	health -= damage
 	# TODO show animation or particles
 
+
+func selfDestruction() :
+	if executingDying: return
+	executingDying = true
+	$Label3D.visible = false
+	Transitions.fadeOut()
+	await  Transitions.transition_finished
+	get_tree().change_scene_to_file("res://levels/protoscene.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	onScene = true
-	health = maxHealth
+	health = PlayerManager.maxHealth
 	for child in $Animations.get_children():
 		if child.is_class("Sprite3D"):
 			sprites.append(child)
@@ -67,6 +72,7 @@ func _ready() -> void:
 		var weapon = scene.instantiate()
 		weapon.scale = Vector3(0.6, 0.6, 0.6)
 		weapon.distance = 0.8
+		weapon.originator = self
 		add_child(weapon)
 		weapons.append(weapon)
 	$DamageArea.area_entered.connect(_onDamageAreaEntered)
@@ -79,6 +85,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$Jump.play()
 		velocity.y = 5
 
 	# Get the input direction and handle the movement/deceleration.
@@ -99,7 +106,9 @@ func _physics_process(delta: float) -> void:
 	elif velocity.x > 0.1:
 		$Animations.rotation.y = 0.0
 	
-	# TODO Death state
+	if health <= 0.0:
+		selfDestruction()
+	
 	$Label3D.text = "HP: %d"%[health]
 	match state:
 		STATE.IDLE:

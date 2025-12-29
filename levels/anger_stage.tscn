@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7rwpoelr5bj6"]
+[gd_scene load_steps=6 format=3 uid="uid://b7rwpoelr5bj6"]
 
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="1_0rgr5"]
 [ext_resource type="Script" uid="uid://yrov1gsmrjyk" path="res://levels/anger_stage.gd" id="1_hjwwh"]
 [ext_resource type="PackedScene" uid="uid://dyo041exxfi8s" path="res://levels/anger_scenario.tscn" id="4_pvve0"]
 [ext_resource type="PackedScene" uid="uid://stt17gayarjd" path="res://enemies/boss_anger.tscn" id="5_hjwwh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pvve0"]
+size = Vector3(24.403503, 10.362183, 12.545044)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_hjwwh")
@@ -14,5 +17,13 @@ maxSpeed = 5.0
 
 [node name="Boss" parent="." instance=ExtResource("5_hjwwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3395815, -15.425249)
+speed = 2.5
+rammingSpeed = 7.0
 
 [node name="Scenario" parent="." instance=ExtResource("4_pvve0")]
+
+[node name="BattleStart" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.033169)
+shape = SubResource("BoxShape3D_pvve0")

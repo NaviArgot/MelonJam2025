@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbtnw7m2vpvxw"]
+[gd_scene load_steps=5 format=3 uid="uid://bbtnw7m2vpvxw"]
 
 [ext_resource type="Script" uid="uid://dmmoj0ojw6ib1" path="res://shared/dialogues.gd" id="1_8rph6"]
 [ext_resource type="Texture2D" uid="uid://2mcwvl3uxqnx" path="res://assets/textures/dialogue_box.png" id="1_g86h6"]
+[ext_resource type="FontFile" uid="uid://ca1h2dp785vfb" path="res://assets/DungeonFont.ttf" id="3_egngy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wb24a"]
+font = ExtResource("3_egngy")
+font_size = 18
 
 [node name="Dialogues" type="Control"]
 process_mode = 3
@@ -12,6 +17,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8rph6")
+characterColors = Dictionary[String, Color]({
+"anger": Color(0.7511461, 0.13976711, 0, 1),
+"joy": Color(0.85301816, 0.6671938, 0, 1),
+"player": Color(0.64466345, 0.64466345, 0.64466345, 1),
+"sadness": Color(6.256998e-07, 0.49281865, 0.60656923, 1),
+"self": Color(0.5834732, 0.46287107, 0.8261428, 1)
+})
 
 [node name="DialogueBox" type="AspectRatioContainer" parent="."]
 custom_minimum_size = Vector2(100, 50)
@@ -55,4 +67,5 @@ custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Test dsfsdf"
+label_settings = SubResource("LabelSettings_wb24a")
 autowrap_mode = 2

@@ -6,6 +6,12 @@ func fadeOut():
 	$AnimationPlayer.play("fade_out")
 	await $AnimationPlayer.animation_finished
 	transition_finished.emit()
+	
+
+func fadeIn():
+	$AnimationPlayer.play("fade_in")
+	await $AnimationPlayer.animation_finished
+	transition_finished.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfgigi10my0qx"]
+
+[ext_resource type="Script" uid="uid://cyibmlfkp3axl" path="res://shared/global_audio.gd" id="1_6vb06"]
+
+[node name="Node3D" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_6vb06")
+
+[node name="AudioLoop" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioIntro" type="AudioStreamPlayer" parent="."]

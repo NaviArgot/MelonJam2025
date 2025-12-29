@@ -1,5 +1,35 @@
-[gd_scene format=3 uid="uid://vngbfhq0kq8f"]
+[gd_scene load_steps=5 format=3 uid="uid://vngbfhq0kq8f"]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[ext_resource type="Script" uid="uid://dr66rggym83rx" path="res://enemies/boss_joy.gd" id="1_vc2r0"]
+[ext_resource type="Texture2D" uid="uid://qac8o2ssg8f6" path="res://assets/models/boss_joy_Joy_mask.png" id="2_vc2r0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4d08u"]
+size = Vector3(1.593689, 1.7593384, 0.36224365)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nr3q"]
+size = Vector3(2.0043945, 2.0930634, 1.5635376)
+
+[node name="BossJoy" type="CharacterBody3D"]
+script = ExtResource("1_vc2r0")
+speed = 6.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_vc2r0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03817749, -0.013336182, -0.024993896)
+shape = SubResource("BoxShape3D_4d08u")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034179688, 0.06970978, -0.04727173)
+shape = SubResource("BoxShape3D_2nr3q")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5796027, 0)
