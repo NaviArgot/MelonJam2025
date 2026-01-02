@@ -15,8 +15,8 @@ var bulletScene = preload("res://bullets/bullet.tscn")
 var state : STATE = STATE.IDLE
 var isAttacking : bool = false
 
-var coolChangeTarget = TimedCount.new(1.5)
-var coolBaseBullet = TimedCount.new(1.0)
+var coolChangeTarget = TimedCount.new(2.5)
+var coolBaseBullet = TimedCount.new(1.5)
 var coolSelection = TimedCount.new(15.0)
 
 func getScene():
@@ -40,7 +40,6 @@ func spawnBulletDirected(angle : float, offset: float, speed_ : float):
 	var bullet : Bullet = bulletScene.instantiate()
 	bullet.direction = dir
 	bullet.position = global_position
-	bullet.position.y = PlayerManager.getPosition().y
 	bullet.speed = speed_
 	bullet.damage = 1.0
 	bullet.maxLifeTime = 5.0
@@ -56,7 +55,6 @@ func spawnBulletCircle(amount: int, angle: float, speed_: float):
 		var bullet : Bullet = bulletScene.instantiate()
 		bullet.direction = dir
 		bullet.position = global_position
-		bullet.position.y = PlayerManager.getPosition().y
 		bullet.speed = speed_
 		bullet.damage = 1.0
 		bullet.maxLifeTime = 5.0
@@ -70,7 +68,7 @@ func base():
 	if coolBaseBullet.isReady():
 		coolBaseBullet.reset()
 		for i in range(5):
-			spawnBulletCircle(6, 0.0,  4.0 + (2.0/5.0) * i)
+			spawnBulletCircle(6, 0.0,  3.5 + (2.0/5.0) * i)
 	if not isAttacking and coolSelection.isReady():
 		coolSelection.reset()
 		if randf() > 0.7:
@@ -86,10 +84,10 @@ func attack1():
 	isAttacking = true
 	velocity = Vector3(0.0, 0.0, 0.0)
 	var nBullets = 100
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	for i in range(nBullets):
 		spawnBulletCircle(4, (TAU/nBullets) * i, 6.0)
-		await get_tree().create_timer(0.02).timeout
+		await get_tree().create_timer(0.06).timeout
 	isAttacking = false
 	state = STATE.BASE
 
@@ -108,7 +106,7 @@ func attack2():
 			spawnBulletDirected(playerAngle, (amplitude/nBullets) * j, 6.0)
 		for j in range(i/2):
 			spawnBulletDirected(playerAngle, -(amplitude/nBullets) * j, 6.0)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.2).timeout
 	isAttacking = false
 	state = STATE.BASE
 	

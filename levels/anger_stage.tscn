@@ -18,7 +18,8 @@ maxSpeed = 5.0
 [node name="Boss" parent="." instance=ExtResource("5_hjwwh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3395815, -15.425249)
 speed = 2.5
-rammingSpeed = 7.0
+rammingSpeed = 6.0
+maxHealth = 150.0
 
 [node name="Scenario" parent="." instance=ExtResource("4_pvve0")]
 

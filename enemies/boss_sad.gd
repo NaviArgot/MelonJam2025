@@ -16,8 +16,8 @@ var state : STATE = STATE.IDLE
 var isAttacking : bool = false
 
 var coolChangeTarget = TimedCount.new(1.5)
-var coolBaseBullet = TimedCount.new(1.0)
-var coolSelection = TimedCount.new(8.0)
+var coolBaseBullet = TimedCount.new(3.0)
+var coolSelection = TimedCount.new(4.0)
 
 func getScene():
 	return get_tree().root.get_children()[-1]
@@ -40,7 +40,6 @@ func spawnBulletDirected(angle : float, offset: float, speed_ : float):
 	var bullet : Bullet = bulletScene.instantiate()
 	bullet.direction = dir
 	bullet.position = global_position
-	bullet.position.y = PlayerManager.getPosition().y
 	bullet.speed = speed_
 	bullet.damage = 1.0
 	bullet.maxLifeTime = 5.0
@@ -56,7 +55,6 @@ func spawnBulletCircle(amount: int, angle: float, speed_: float):
 		var bullet : Bullet = bulletScene.instantiate()
 		bullet.direction = dir
 		bullet.position = global_position
-		bullet.position.y = PlayerManager.getPosition().y
 		bullet.speed = speed_
 		bullet.damage = 1.0
 		bullet.maxLifeTime = 5.0
@@ -73,12 +71,11 @@ func base():
 		var target = getPlayerDir()
 		var playerAngle = atan2(target.z, target.x)
 		for i in range(5):
-			spawnBulletDirected(6, playerAngle + randf() * TAU/8,  8.0) 
+			spawnBulletDirected(6, playerAngle + randf() * TAU/8,  6.0) 
 	if not isAttacking and coolSelection.isReady():
 		coolSelection.reset()
-		if randf() > 0.7:
-			#state = STATE.ATTACK1
-			attack1()
+		attack1()
+			
 
 
 func attack1():
@@ -86,7 +83,9 @@ func attack1():
 	state = STATE.ATTACK1
 	isAttacking = true
 	velocity = Vector3(0.0, 0.0, 0.0)
-	spawnBulletCircle(12, 0.0, 6.0)
+	for i in range(6):
+		spawnBulletCircle(12, 0.0, 5)
+		await get_tree().create_timer(0.6).timeout
 	isAttacking = false
 	state = STATE.BASE
 

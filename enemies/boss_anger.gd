@@ -16,8 +16,9 @@ var bulletScene = preload("res://bullets/bullet.tscn")
 var count = 0.0
 var state : STATE = STATE.IDLE
 
+var proximityRecharge := TimedCount.new(2.0)
 var proximityBulletCD := TimedCount.new(0.2)
-var baseBulletCooldown := TimedCount.new(0.5)
+var baseBulletCooldown := TimedCount.new(0.8)
 var ramCooldown := TimedCount.new(10.0)
 
 func getScene():
@@ -45,7 +46,6 @@ func spawnBulletCircle(amount: int, angle: float, speed: float):
 		var bullet : Bullet = bulletScene.instantiate()
 		bullet.direction = dir
 		bullet.position = global_position
-		bullet.position.y = PlayerManager.getPosition().y
 		bullet.speed = speed
 		bullet.damage = 1.0
 		bullet.maxLifeTime = 5.0
@@ -65,9 +65,10 @@ func baseState(delta : float):
 	if baseBulletCooldown.isReady():
 		baseBulletCooldown.reset()
 		var angle = atan2(velocity.y, velocity.x)
-		spawnBulletCircle(2, angle, 8.0)
+		spawnBulletCircle(3, angle, 5.0)
 	if (PlayerManager.getPosition() - global_position)\
-		.length_squared() < 4:
+		.length_squared() < 4 and proximityRecharge.isReady():
+		proximityRecharge.reset()
 		state = STATE.ATTACK2
 		finishAttack2()
 	if ramCooldown.isReady() and randf() > 0.5:

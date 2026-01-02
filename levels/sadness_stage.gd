@@ -3,7 +3,8 @@ extends Node3D
 enum STATE {BEFORE, START, HALF, END}
 var state = STATE.BEFORE
 
-var bgAnger = preload("res://assets/realmusics/anger.wav")
+var bgIntro =preload("res://assets/realmusics/sadness.wav")
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,27 +14,32 @@ func _ready() -> void:
 	$Boss.death.connect(_on_boss_death)
 	pass # Replace with function body.
 
+func playMusic():
+	await DialogueSystem.dialogue_finished
+	GlobalAudio.playMusic(bgIntro)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func playMusic() :
-	await DialogueSystem.dialogue_finished
-	GlobalAudio.playMusic(bgAnger)
+
 
 func battleStart():
 	DialogueSystem.showDialogueCharacter(
 		[
-			"FINALLY YOU BASTARD",
-			"Hey, what? Why are you screaming?",
-			"DON'T YOU SEE I'M ABOUT TO KILL YOU?",
-			"Ok, let's talk about this first, there's no need to- Wait, wait!!!"
+			"…What the hell are you?",
+			"I’m... I’m nothing *sniff*",
+			"Why are you crying? You’re so annoying.",
+			"It’s been so long since I’m locked in this room",
+			"*sniff*... Let me make you feel my sadness.",
+			"Wait… Wait!!!",
 		],
 		[
-			"anger",
 			"player",
-			"anger",
+			"sadness",
+			"player",
+			"sadness",
+			"sadness",
 			"player"
 		]
 	)
@@ -44,30 +50,28 @@ func battleStart():
 func battleEnd():
 	DialogueSystem.showDialogueCharacter(
 		[
-			"You piece of shit... I lost...",
-			"You are finally calmed.. Now why were you so angry?",
-			"Because I'm locked in this hellhole since you're a fucking child!",
-			"And you shouldn’t go out. Anger is too dangerous.",
-			"I DON’T CARE- *cough*... I have the right to go out, you can’t lock me here eternally!",
-			"You never bring anything good outside! You’re a danger!",
-			"You think I’m a danger for you… But I’m supposed to be a danger for everyone else.",
-			"Don’t you see the problem you fucker?",
-			"You don’t need to hide me, and if someone is beating you or insulting you again I’ll kill him!",
-			"You’re defending me? Why?...",
-			"I always tried… to protect you…"
+			"I lost… This is so sad…",
+			"So you never stop crying? It’s so weird, it makes me want to hit you even more!",
+			"That’s what they were telling you *sniff*",
+			"So I stopped. They were right.",
+			"They were wrong *sniff*... They were always wrong.",
+			"But... But crying is for the weak!",
+			"If you don’t want to cry… It’s because you are afraid to show how you feel *sniff*",
+			"So who is the weak now?",
+			"I’m... afraid? Refrain from crying makes me weak?",
+			"Yes *sniff*, of course.",
 		],
 		[
-			"anger",
+			"sadness",
 			"player",
-			"anger",
+			"sadness",
 			"player",
-			"anger",
+			"sadness",
 			"player",
-			"anger",
-			"anger",
-			"anger",
+			"sadness",
+			"sadness",
 			"player",
-			"anger",
+			"sadness",
 		]
 	)
 	state = STATE.HALF
@@ -75,11 +79,11 @@ func battleEnd():
 func middleFight() :
 	DialogueSystem.showDialogueCharacter(
 		[
-			"FUCK THIS, WHY ARE YOU DEFENDING YOURSELF? OH I'M SO ANGRY!",
-			"You're angry?",
+			"Stop beating me, why are you doing that? Oh, I’m so sad…",
+			"You’re… Sad?",
 		],
 		[
-			"anger",
+			"sadness",
 			"player",
 		]
 	)
@@ -95,7 +99,7 @@ func _on_half_life():
 
 func _on_boss_death():
 	battleEnd()
-	PlayerManager.flags["ACCEPTED_ANGER"] = true
+	PlayerManager.flags["ACCEPTED_SADNESS"] = true
 	await DialogueSystem.dialogue_finished
 	Transitions.fadeOut()
 	$Boss.queue_free()

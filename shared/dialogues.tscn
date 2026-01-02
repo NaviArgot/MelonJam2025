@@ -43,9 +43,11 @@ ratio = 4.6
 stretch_mode = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="DialogueBox"]
+z_index = 1
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("1_g86h6")
+draw_center = false
 region_rect = Rect2(0, 0, 31.228493, 32)
 patch_margin_left = 6
 patch_margin_top = 6
@@ -53,6 +55,10 @@ patch_margin_right = 6
 patch_margin_bottom = 7
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="DialogueBox"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
 layout_mode = 2

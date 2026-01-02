@@ -12,4 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if PlayerManager.hasAcceptedAll():
+		await DialogueSystem.dialogue_finished
+		Transitions.fadeOut()
+		await Transitions.transition_finished
+		get_tree().change_scene_to_file("res://levels/protoending.tscn")

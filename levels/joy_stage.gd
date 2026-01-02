@@ -25,15 +25,21 @@ func _process(delta: float) -> void:
 func battleStart():
 	DialogueSystem.showDialogueCharacter(
 		[
-			"FINALLY YOU BASTARD",
-			"Hey, what? Why are you screaming?",
-			"DON'T YOU SEE I'M ABOUT TO KILL YOU?",
-			"Ok, let's talk about this first, there's no need to- Wait, wait!!!"
+			"This is terrifying.",
+			"Hellooo my friend! You’re the one who locked me here, you don’t remember?",
+			"Why are you so shocked?",
+			"I have never seen you before.",
+			"Haaa indeed it’s been so long my friend... I guess it’s time for you to go anyway!",
+			"Let’s play a bit before I kill you! It will be so much fun!!",
+			"Wait... Wait!!!"
 		],
 		[
-			"anger",
 			"player",
-			"anger",
+			"joy",
+			"joy",
+			"player",
+			"joy",
+			"joy",
 			"player"
 		]
 	)
@@ -44,30 +50,36 @@ func battleStart():
 func battleEnd():
 	DialogueSystem.showDialogueCharacter(
 		[
-			"You piece of shit... I lost...",
-			"You are finally calmed.. Now why were you so angry?",
-			"Because I'm locked in this hellhole since you're a fucking child!",
-			"And you shouldn’t go out. Anger is too dangerous.",
-			"I DON’T CARE- *cough*... I have the right to go out, you can’t lock me here eternally!",
-			"You never bring anything good outside! You’re a danger!",
-			"You think I’m a danger for you… But I’m supposed to be a danger for everyone else.",
-			"Don’t you see the problem you fucker?",
-			"You don’t need to hide me, and if someone is beating you or insulting you again I’ll kill him!",
-			"You’re defending me? Why?...",
-			"I always tried… to protect you…"
+			"Haha... Hahaha... You did it...",
+			"If you were locked, why are you always so happy?",
+			"There’s no happiness in living in a hellhole like this.",
+			"My friend... You will always find happiness... ",
+			"Everywhere... You just need... To accept being happy... Hahahahaha!",
+			"No... There is no happiness. You’re useless.",
+			"You still believe this after all these years my friend?",
+			"You had a hard time dealing with your childhood, I know it.",
+			"How-",
+			"But you don’t have... to mutilate your happiness...",
+			"for people that aren’t even here anymore!",
+			"Smile my friend... it’s over! Life is great!",
+			"Life is... Great?",
+			"Yes! Hahahahaha!"
 		],
 		[
-			"anger",
+			"joy",
 			"player",
-			"anger",
 			"player",
-			"anger",
+			"joy",
+			"joy",
 			"player",
-			"anger",
-			"anger",
-			"anger",
+			"joy",
+			"joy",
 			"player",
-			"anger",
+			"joy",
+			"joy",
+			"joy",
+			"player",
+			"joy"
 		]
 	)
 	state = STATE.HALF
@@ -75,11 +87,11 @@ func battleEnd():
 func middleFight() :
 	DialogueSystem.showDialogueCharacter(
 		[
-			"FUCK THIS, WHY ARE YOU DEFENDING YOURSELF? OH I'M SO ANGRY!",
-			"You're angry?",
+			"So you’re able to fight my friend! Oh, I’m so happy, I’m so happy!!",
+			"You’re... Happy?",
 		],
 		[
-			"anger",
+			"joy",
 			"player",
 		]
 	)
@@ -95,6 +107,7 @@ func _on_half_life():
 
 func _on_boss_death():
 	battleEnd()
+	PlayerManager.flags["ACCEPTED_JOY"] = true
 	await DialogueSystem.dialogue_finished
 	Transitions.fadeOut()
 	$Boss.queue_free()

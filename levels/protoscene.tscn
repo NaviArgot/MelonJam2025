@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://c541mfp6js1we"]
+[gd_scene load_steps=19 format=3 uid="uid://c541mfp6js1we"]
 
 [ext_resource type="Script" uid="uid://bfwe3i3y2256" path="res://levels/protoscene.gd" id="1_by63k"]
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="1_iar0x"]
 [ext_resource type="MeshLibrary" uid="uid://dv8uklvjyigq0" path="res://assets/meshlibs/entrance.meshlib" id="3_8jnmb"]
 [ext_resource type="ArrayMesh" uid="uid://dl2kvlb7dd46e" path="res://assets/models/meshes/billboard.tres" id="4_bobsq"]
+[ext_resource type="Script" uid="uid://wi1y2mh0jd36" path="res://levels/entrance.gd" id="4_by63k"]
 [ext_resource type="ArrayMesh" uid="uid://btkcew2v6ul8f" path="res://assets/models/meshes/hub.tres" id="6_hnf0d"]
 [ext_resource type="Script" uid="uid://dm6mfdijr7gjc" path="res://shared/areas/level_start_area.gd" id="7_4aumq"]
 [ext_resource type="Texture2D" uid="uid://04ajusgxmh3" path="res://assets/textures/sadness.png" id="8_bobsq"]
@@ -66,6 +67,8 @@ mesh = ExtResource("6_hnf0d")
 
 [node name="AngerEntrance" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9003854, 0.38659525, -7.285528)
+script = ExtResource("4_by63k")
+flagCheck = "anger"
 
 [node name="AngerLevel" type="Area3D" parent="AngerEntrance"]
 script = ExtResource("7_4aumq")
@@ -93,6 +96,8 @@ spot_angle_attenuation = 0.064704224
 
 [node name="SadnessEntrance" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0681324, 0.38659525, -7.285528)
+script = ExtResource("4_by63k")
+flagCheck = "sadness"
 
 [node name="SadnessLevel" type="Area3D" parent="SadnessEntrance"]
 script = ExtResource("7_4aumq")
@@ -120,6 +125,8 @@ spot_angle_attenuation = 0.064704224
 
 [node name="JoyEntrance" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.14534, 0.38659525, -7.285528)
+script = ExtResource("4_by63k")
+flagCheck = "joy"
 
 [node name="JoyLevel" type="Area3D" parent="JoyEntrance"]
 script = ExtResource("7_4aumq")

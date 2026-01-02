@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxts5txqdhaoq"]
 
-[ext_resource type="Script" uid="uid://yrov1gsmrjyk" path="res://levels/anger_stage.gd" id="1_ii1wi"]
+[ext_resource type="Script" uid="uid://cwnbmsliuwyg5" path="res://levels/sadness_stage.gd" id="1_ii1wi"]
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_10qj4"]
 [ext_resource type="PackedScene" uid="uid://dyn0hlb7wu5mn" path="res://enemies/boss_sad.tscn" id="4_10qj4"]
 [ext_resource type="PackedScene" uid="uid://dqutjwv8lup7c" path="res://levels/sadness_scenario.tscn" id="4_ii1wi"]
@@ -26,3 +26,4 @@ shape = SubResource("BoxShape3D_ii1wi")
 [node name="Boss" parent="." instance=ExtResource("4_10qj4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2301192, -14.565037)
 speed = 5.0
+maxHealth = 150.0
