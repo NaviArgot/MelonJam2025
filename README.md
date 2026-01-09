@@ -1,5 +1,5 @@
-# NAME TBD
-**Masquerade** a game for the 2025 Winter Melon Jam made by:
+# Masquerade
+A game for the 2025 Winter Melon Jam made by:
 
 - Chuggy (2D art)
 - Naermor (Narrative, Game Design, Management)
