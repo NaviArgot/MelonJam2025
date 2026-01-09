@@ -6,6 +6,8 @@ A game for the 2025 Winter Melon Jam made by:
 - Sasoun (Music, Sound Effects)
 - Usu (Programming, 3D models)
 
+You can play it here: [naermor.itch.io/masquerade](https://naermor.itch.io/masquerade)
+
 ## Collaboration guidelines
 
 Using github and git for collaboration has a couple of objectives:
