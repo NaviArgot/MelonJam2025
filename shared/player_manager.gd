@@ -38,3 +38,10 @@ func setCanMove(flag : bool) -> void:
 
 func playerCanMove() -> bool:
 	return canMove
+
+func printFlags():
+	print("FLAGS")
+	var format = "[%s] %s"
+	for key in flags.keys():
+		var miau = format % [key, flags[key]]
+		print(miau)

@@ -20,7 +20,7 @@ maxSpeed = 5.0
 [node name="Boss" parent="." instance=ExtResource("4_2h26n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.949813, -16.304142)
 speed = 4.0
-maxHealth = 150.0
+maxHealth = 5.0
 
 [node name="BattleStart" type="Area3D" parent="."]
 

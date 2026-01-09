@@ -26,4 +26,4 @@ shape = SubResource("BoxShape3D_ii1wi")
 [node name="Boss" parent="." instance=ExtResource("4_10qj4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2301192, -14.565037)
 speed = 5.0
-maxHealth = 150.0
+maxHealth = 5.0

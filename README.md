@@ -1,10 +1,10 @@
 # NAME TBD
-A game for the 2025 Winter Melon Jam made by:
+**Masquerade** a game for the 2025 Winter Melon Jam made by:
 
-- Name
-- Name
-- Name
-- Name
+- Chuggy (2D art)
+- Naermor (Narrative, Game Design, Management)
+- Sasoun (Music, Sound Effects)
+- Usu (Programming, 3D models)
 
 ## Collaboration guidelines
 
@@ -55,4 +55,3 @@ For coding collaboration we will use this rules:
 - [Git Manual](https://git-scm.com/book/en/v2) (all you need are the first 3 chapters)
 - [Godot Project Import Tutorial](https://docs.godotengine.org/en/stable/tutorials/editor/project_manager.html#opening-and-importing-projects)
 - [Github collaboration guide](https://medium.com/@jonathanmines/the-ultimate-github-collaboration-guide-df816e98fb67)
-

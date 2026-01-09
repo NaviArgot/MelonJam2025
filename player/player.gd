@@ -30,6 +30,9 @@ func receiveInput () -> void:
 	if Input.is_action_just_pressed("weapon_change"):
 		weapons[currWeapon].disableWeapon()
 		currWeapon = (currWeapon + 1) % weapons.size()
+	if Input.is_action_just_pressed("roll"):
+		PlayerManager.printFlags()
+		print("Accepted all: ", PlayerManager.hasAcceptedAll())
 		
 
 func computeFacingTarget() -> void:
