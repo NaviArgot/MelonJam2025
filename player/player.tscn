@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://kwryfc7m7ss3"]
+[gd_scene load_steps=12 format=3 uid="uid://kwryfc7m7ss3"]
 
 [ext_resource type="Script" uid="uid://c7xewgfi5kbp0" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bivld73578xqf" path="res://assets/player_run_anim_Sheet.png" id="4_hqtel"]
 [ext_resource type="AudioStream" uid="uid://cy8k8r6tpliqw" path="res://assets/sounds/Jump.wav" id="4_yw30f"]
+[ext_resource type="AudioStream" uid="uid://dn5syw233hjif" path="res://assets/sounds/Damaged.wav" id="5_qjkh3"]
 [ext_resource type="Texture2D" uid="uid://bfu16i0k5keyh" path="res://assets/player_idle_anim_Sheet.png" id="5_sweqy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sweqy"]
@@ -149,7 +150,6 @@ libraries = {
 
 [node name="Run" type="Sprite3D" parent="Animations"]
 pixel_size = 0.03
-shaded = true
 texture_filter = 0
 texture = ExtResource("4_hqtel")
 hframes = 4
@@ -157,15 +157,10 @@ region_rect = Rect2(4, 0, 120, 32)
 
 [node name="Idle" type="Sprite3D" parent="Animations"]
 pixel_size = 0.03
-shaded = true
 no_depth_test = true
 texture_filter = 0
 texture = ExtResource("5_sweqy")
 hframes = 3
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7917919, 0)
-text = "State"
 
 [node name="DamageArea" type="Area3D" parent="."]
 collision_layer = 2
@@ -177,3 +172,7 @@ shape = SubResource("SphereShape3D_g1dw6")
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_yw30f")
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qjkh3")
+volume_db = -10.0

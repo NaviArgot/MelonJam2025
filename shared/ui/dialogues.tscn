@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbtnw7m2vpvxw"]
 
-[ext_resource type="Script" uid="uid://dmmoj0ojw6ib1" path="res://shared/dialogues.gd" id="1_8rph6"]
+[ext_resource type="Script" uid="uid://dmmoj0ojw6ib1" path="res://shared/ui/dialogues.gd" id="1_8rph6"]
 [ext_resource type="Texture2D" uid="uid://2mcwvl3uxqnx" path="res://assets/textures/dialogue_box.png" id="1_g86h6"]
 [ext_resource type="FontFile" uid="uid://ca1h2dp785vfb" path="res://assets/DungeonFont.ttf" id="3_egngy"]
 

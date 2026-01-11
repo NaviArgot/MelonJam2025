@@ -1,10 +1,10 @@
 class_name Player
 extends CharacterBody3D
 
-var weaponScenes : Array[PackedScene] = [
-	preload("res://weapons/sword.tscn"),
-	preload("res://weapons/slingshot.tscn")
-]
+var weaponScenes : Dictionary[String, PackedScene] = {
+	"noodle_sword": preload("res://weapons/sword.tscn"),
+	"slingshot": preload("res://weapons/slingshot.tscn")
+}
 
 enum STATE {IDLE, WALKING, ATTACKING}
 enum TURNING {LEFT, RIGHT}
@@ -18,6 +18,7 @@ var facing: Vector3 = Vector3(0.0, 0.0, -1.0)
 var state: STATE = STATE.IDLE
 var sprites: Array[Sprite3D] = []
 var weapons : Array[Weapon] = []
+var weaponNames : Array[String] = []
 var currWeapon : int  = 0
 var onScene : bool = false
 var executingDying : bool  =false
@@ -30,9 +31,8 @@ func receiveInput () -> void:
 	if Input.is_action_just_pressed("weapon_change"):
 		weapons[currWeapon].disableWeapon()
 		currWeapon = (currWeapon + 1) % weapons.size()
-	if Input.is_action_just_pressed("roll"):
-		PlayerManager.printFlags()
-		print("Accepted all: ", PlayerManager.hasAcceptedAll())
+		PlayerManager.currWeapon = currWeapon
+		Hud.setWeapon(weaponNames[currWeapon])
 		
 
 func computeFacingTarget() -> void:
@@ -51,33 +51,52 @@ func enableAnim(animation: String) -> void:
 			sprite.visible = false
 	$AnimationPlayer.play(animation)
 
+func showDamageAnim():
+	var sprite : Sprite3D
+	match state:
+		STATE.IDLE:
+			sprite = $Animations/Idle
+		STATE.WALKING:
+			sprite = $Animations/Run
+		_ : 
+			sprite = $Animations/Idle
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite, "modulate", Color.RED, 0.2)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+
 func takeDamage(damage : float):
 	health -= damage
-	# TODO show animation or particles
+	Hud.setHealth(health)
+	showDamageAnim()
+	if $Damage.finished:
+		$Damage.play()
 
 
 func selfDestruction() :
 	if executingDying: return
 	executingDying = true
-	$Label3D.visible = false
 	Transitions.fadeOut()
 	await  Transitions.transition_finished
 	get_tree().change_scene_to_file("res://levels/protoscene.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	currWeapon = PlayerManager.currWeapon
 	onScene = true
 	health = PlayerManager.maxHealth
 	for child in $Animations.get_children():
 		if child.is_class("Sprite3D"):
 			sprites.append(child)
-	for scene in weaponScenes:
-		var weapon = scene.instantiate()
+	for key in weaponScenes:
+		var weapon = weaponScenes[key].instantiate()
 		weapon.scale = Vector3(0.6, 0.6, 0.6)
 		weapon.distance = 0.8
 		weapon.originator = self
 		add_child(weapon)
 		weapons.append(weapon)
+		weaponNames.append(key)
+	Hud.setWeapon(weaponNames[currWeapon])
+	Hud.setHealth(health)
 	$DamageArea.area_entered.connect(_onDamageAreaEntered)
 
 
@@ -112,7 +131,6 @@ func _physics_process(delta: float) -> void:
 	if health <= 0.0:
 		selfDestruction()
 	
-	$Label3D.text = "HP: %d"%[health]
 	match state:
 		STATE.IDLE:
 			enableAnim("idle")

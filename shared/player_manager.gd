@@ -10,6 +10,7 @@ var flags : Dictionary[String, bool] = {
 var maxHealth : float = 50.0
 var playerPos: Vector3 = Vector3(0.0, 0.0, 0.0)
 var canMove : bool = true
+var currWeapon : int = 0
 
 func setPosition(pos : Vector3):
 	playerPos = pos

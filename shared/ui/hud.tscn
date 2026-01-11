@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://c3aijvdrno6lf"]
+
+[ext_resource type="Script" uid="uid://bc5jm0ye7gj6s" path="res://shared/ui/hud.gd" id="1_ej11o"]
+[ext_resource type="Texture2D" uid="uid://cthcc3caw3dyx" path="res://assets/textures/hud/frame_under.png" id="1_p1k4t"]
+[ext_resource type="Texture2D" uid="uid://dsl3x3fhxdfmx" path="res://assets/foam_sword.png" id="2_arl05"]
+[ext_resource type="Texture2D" uid="uid://tp55xdssaxqn" path="res://assets/textures/hud/frame_hp.png" id="2_q38on"]
+[ext_resource type="Texture2D" uid="uid://tlol2v0mh2cn" path="res://assets/textures/hud/frame_over.png" id="3_85k0s"]
+[ext_resource type="Texture2D" uid="uid://d0talc0gkmr11" path="res://assets/ph_ranged.png" id="3_mkt64"]
+[ext_resource type="Texture2D" uid="uid://bjkc14760xwa0" path="res://assets/textures/hud/frame_weapon.png" id="4_q38on"]
+[ext_resource type="Texture2D" uid="uid://ct4734q5pgvjm" path="res://assets/textures/hud/mouse_right.png" id="5_85k0s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej11o"]
+atlas = ExtResource("5_85k0s")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arl05"]
+atlas = ExtResource("5_85k0s")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mkt64"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ej11o")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_arl05")
+}],
+"loop": true,
+"name": &"press",
+"speed": 5.0
+}]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ej11o")
+weapons = Dictionary[String, Texture]({
+"noodle_sword": ExtResource("2_arl05"),
+"slingshot": ExtResource("3_mkt64")
+})
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 228.0
+offset_bottom = 37.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 32
+stretch_margin_top = 16
+stretch_margin_right = 32
+stretch_margin_bottom = 16
+texture_under = ExtResource("1_p1k4t")
+texture_over = ExtResource("2_q38on")
+texture_progress = ExtResource("3_85k0s")
+
+[node name="WeaponFrame" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.034375
+anchor_top = 0.17777778
+anchor_right = 0.034375
+anchor_bottom = 0.17777778
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="WeaponFrame"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.525
+anchor_top = 0.4
+anchor_right = 0.525
+anchor_bottom = 0.4
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_q38on")
+metadata/_edit_use_anchors_ = true
+
+[node name="Weapon" type="TextureRect" parent="WeaponFrame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -17.0
+offset_right = 15.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MousePress" type="Control" parent="WeaponFrame"]
+texture_filter = 1
+layout_mode = 1
+anchor_right = 0.025
+anchor_bottom = 0.044000003
+offset_left = -2.0
+offset_top = -44.0
+offset_right = -2.0
+offset_bottom = -43.84
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WeaponFrame/MousePress"]
+position = Vector2(37, 76)
+sprite_frames = SubResource("SpriteFrames_mkt64")
+animation = &"press"
+autoplay = "press"
+frame_progress = 0.64860266
