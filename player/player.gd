@@ -25,7 +25,7 @@ var executingDying : bool  =false
 
 func receiveInput () -> void:
 	if Input.is_action_pressed("attack"):
-		weapons[currWeapon].enableWeapon(facing)
+		weapons[currWeapon].enableWeapon()
 	else:
 		weapons[currWeapon].disableWeapon()
 	if Input.is_action_just_pressed("weapon_change"):
@@ -139,6 +139,7 @@ func _physics_process(delta: float) -> void:
 	computeFacingTarget()
 	receiveInput()
 	move_and_slide()
+	weapons[currWeapon].faceTowards(facing)
 	if onScene:
 		PlayerManager.setPosition(global_position)
 

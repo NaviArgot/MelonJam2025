@@ -5,7 +5,7 @@ var originator = null
 @export var distance: float = 0.0
 @export var damage: float = 1.0
 
-@abstract func enableWeapon(facing : Vector3) -> void
+@abstract func enableWeapon() -> void
 @abstract func disableWeapon() -> void
 
 func faceTowards (direction: Vector3) -> void:

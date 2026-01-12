@@ -5,6 +5,7 @@ class_name Slingshot extends Weapon
 
 var bulletScene = preload("res://bullets/bullet.tscn")
 var cooldownCount : float = 0.0
+var facing : Vector3 = Vector3.FORWARD
 
 func spawnBullet(dir: Vector3):
 	var bullet = bulletScene.instantiate()
@@ -15,9 +16,12 @@ func spawnBullet(dir: Vector3):
 	bullet.originator = originator
 	get_tree().root.get_children()[-1].add_child(bullet)
 
-func enableWeapon(facing : Vector3) -> void:
+func faceTowards (direction: Vector3) -> void:
+	super.faceTowards(direction)
+	facing = direction
+
+func enableWeapon() -> void:
 	visible = true
-	faceTowards(facing)
 	if cooldownCount <= 0.0:
 		$AudioStreamPlayer.play()
 		cooldownCount = cooldownTime

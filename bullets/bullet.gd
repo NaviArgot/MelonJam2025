@@ -13,6 +13,7 @@ var originator : Node3D = null
 func _ready() -> void:
 	if textureOverride: $Sprite3D.texture = textureOverride
 	$AttackArea.initialize(damage, originator)
+	$DamageArea.area_entered.connect(_onDamageAreaEntered)
 
 
 func _physics_process(delta: float) -> void:
@@ -20,6 +21,11 @@ func _physics_process(delta: float) -> void:
 	if lifetime != 0.0 and lifetime >= maxLifeTime:
 		queue_free()
 	position += speed * direction * delta
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func _onDamageAreaEntered(area : Area3D) -> void:
+	if "ATTACKAREA" in area and area.originator != self:
+		queue_free()

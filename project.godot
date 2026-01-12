@@ -88,6 +88,7 @@ any={
 3d_physics/layer_1="obstacles"
 3d_physics/layer_2="damage"
 3d_physics/layer_3="attacks"
+3d_physics/layer_4="sword_slash"
 
 [rendering]
 
