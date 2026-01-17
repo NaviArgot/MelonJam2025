@@ -31,7 +31,7 @@ func disableWeapon() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	enabled = false
-	$AttackArea.initialize(5.0, originator)
+	$AttackArea.initialize(damage, originator)
 	$AttackArea.body_entered.connect(_on_body_entered)
 	$AttackArea.area_entered.connect(_on_area_entered)
 

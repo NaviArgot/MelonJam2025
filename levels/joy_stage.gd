@@ -15,7 +15,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func playMusic():
-	await DialogueSystem.dialogue_finished
 	GlobalAudio.playMusicWithLoop(bgIntro, bgLoop)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,6 +42,7 @@ func battleStart():
 			"player"
 		]
 	)
+	await DialogueSystem.dialogue_finished
 	playMusic()
 	$Boss.start()
 	state = STATE.START

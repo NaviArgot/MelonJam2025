@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://docl1bj08ubgo"]
+
+[ext_resource type="Script" uid="uid://drgf7yteur42o" path="res://test.gd" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://dkvnm7ysrklfj" path="res://enemies/Joy/bs_rope.gd" id="2_8uh7m"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8uh7m"]
+size = Vector3(1, 2, 1)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_37kl0")
+
+[node name="BS_Rope" type="Node3D" parent="."]
+script = ExtResource("2_8uh7m")
+bulletsPerSec = 200
+twirlsPerSec = 0.2
+arms = 3
+metadata/_custom_type_script = "uid://dkvnm7ysrklfj"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8uh7m")

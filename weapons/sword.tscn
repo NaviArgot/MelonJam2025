@@ -23,6 +23,7 @@ radius = 0.9171943
 script = ExtResource("1_o2wld")
 usageTime = 0.2
 cooldownTime = 0.3
+damage = 5.0
 
 [node name="Pivot" type="Node3D" parent="."]
 

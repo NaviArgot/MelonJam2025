@@ -8,12 +8,15 @@ var cooldownCount : float = 0.0
 var facing : Vector3 = Vector3.FORWARD
 
 func spawnBullet(dir: Vector3):
-	var bullet = bulletScene.instantiate()
-	bullet.position = global_position
-	bullet.direction = dir
-	bullet.speed = bulletSpeed
-	bullet.damage = damage
-	bullet.originator = originator
+	var bullet : Bullet = bulletScene.instantiate()
+	bullet.init(
+		originator,
+		global_position,
+		Basis.looking_at(dir).rotated(Vector3.UP, TAU/4),
+		damage,
+		5.0,
+		MovementFactory.linear.bind(bulletSpeed),
+		)
 	get_tree().root.get_children()[-1].add_child(bullet)
 
 func faceTowards (direction: Vector3) -> void:
@@ -32,7 +35,6 @@ func disableWeapon() -> void:
 
 func _ready() -> void:
 	super._ready()
-	damage = 5.0
 
 func _physics_process(delta: float) -> void:
 	cooldownCount -= delta

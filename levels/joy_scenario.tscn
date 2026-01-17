@@ -54,6 +54,7 @@ texture = ExtResource("3_8i8fq")
 [node name="Curtains" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.513772, -21.183167)
 pixel_size = 0.12
+texture_filter = 0
 texture = ExtResource("4_eyor0")
 
 [node name="Layer1" type="Node3D" parent="."]
