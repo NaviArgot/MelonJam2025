@@ -1,6 +1,6 @@
 class_name LevelStartArea extends Area3D
 
-@export var pathToDestiny : String
+@export var destiny : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,4 +16,4 @@ func _on_body_entered(body : Node) -> void:
 	if body.name == "Player":
 		Transitions.fadeOut()
 		await Transitions.transition_finished
-		get_tree().change_scene_to_file(pathToDestiny)
+		get_tree().change_scene_to_packed(destiny)

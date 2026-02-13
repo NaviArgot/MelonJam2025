@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgy4j55t6dxa0"]
+
+[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_4k5ej"]
+[ext_resource type="PackedScene" uid="uid://48ajh3jdhb6h" path="res://levels/joy/joy_scenario.tscn" id="3_dn3n5"]
+[ext_resource type="Script" uid="uid://dbq60eyqkeaym" path="res://enemies/mirror/bs_implosion_line.gd" id="4_4k5ej"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mkis"]
+size = Vector3(24.403503, 10.362183, 12.545044)
+
+[node name="Node3D" type="Node3D"]
+process_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_4k5ej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9602399, 4.910836)
+maxSpeed = 5.0
+
+[node name="BattleStart" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.033169)
+shape = SubResource("BoxShape3D_4mkis")
+
+[node name="Scenario" parent="." instance=ExtResource("3_dn3n5")]
+
+[node name="Positions" type="Node3D" parent="."]
+
+[node name="Attacks" type="Node3D" parent="."]
+
+[node name="Test" type="Node3D" parent="Attacks"]
+
+[node name="BS_ImplosionLine" type="Node3D" parent="Attacks/Test"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.007719, 1.0316687, -21.400305)
+script = ExtResource("4_4k5ej")
+offsetForward = 0.8
+distance = 40.0
+active = true
+metadata/_custom_type_script = "uid://dbq60eyqkeaym"

@@ -4,6 +4,7 @@ var flags : Dictionary[String, bool] = {
 	"ACCEPTED_JOY" : false,
 	"ACCEPTED_ANGER" : false,
 	"ACCEPTED_SADNESS" : false,
+	"RECEIVED_KEY" : false,
 	"ACHIEVED_UNIFICATION" : false,
 }
 

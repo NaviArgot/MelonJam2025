@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm7xoqis1sbp6"]
+
+[ext_resource type="Script" uid="uid://docfd3slq43gy" path="res://bullets/droplet_bullet.gd" id="1_gndoj"]
+[ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://shared/areas/attack_area.gd" id="2_y4k2c"]
+[ext_resource type="Texture2D" uid="uid://df5qxx5246kjh" path="res://assets/ph_bullet.png" id="3_xmap2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_t2bd8"]
+radius = 0.26479352
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ascq4"]
+radius = 0.3658665
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_gndoj")
+
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("2_y4k2c")
+metadata/_custom_type_script = "uid://dj60wt6hbji4a"
+
+[node name="Collision" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_t2bd8")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_ascq4")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.03
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_xmap2")

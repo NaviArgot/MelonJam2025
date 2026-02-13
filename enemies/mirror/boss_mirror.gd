@@ -1,4 +1,4 @@
-class_name BossJoy extends CharacterBody3D
+class_name BossMirror extends CharacterBody3D
 
 signal attack_finished
 signal half_life

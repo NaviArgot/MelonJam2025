@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3dx2v7pj32t1"]
+
+[ext_resource type="Script" uid="uid://g22ict8woxde" path="res://levels/joy/joy_stage.gd" id="1_4mkis"]
+[ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_2h26n"]
+[ext_resource type="PackedScene" uid="uid://vngbfhq0kq8f" path="res://enemies/Joy/boss_joy.tscn" id="4_2h26n"]
+[ext_resource type="PackedScene" uid="uid://48ajh3jdhb6h" path="res://levels/joy/joy_scenario.tscn" id="4_4mkis"]
+[ext_resource type="Script" uid="uid://btdutlwxnxnie" path="res://debug/debug_pin.gd" id="5_2h26n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4mkis"]
+size = Vector3(24.403503, 10.362183, 12.545044)
+
+[node name="Node3D" type="Node3D"]
+process_mode = 1
+script = ExtResource("1_4mkis")
+
+[node name="Player" parent="." instance=ExtResource("2_2h26n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9602399, 4.910836)
+maxSpeed = 5.0
+
+[node name="Boss" parent="." instance=ExtResource("4_2h26n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8856778, -16.304142)
+speed = 4.0
+maxHealth = 100.0
+
+[node name="BattleStart" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BattleStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.033169)
+shape = SubResource("BoxShape3D_4mkis")
+
+[node name="Scenario" parent="." instance=ExtResource("4_4mkis")]
+
+[node name="Positions" type="Node3D" parent="."]
+
+[node name="Zigzag" type="Node3D" parent="Positions"]
+visible = false
+
+[node name="Pos1" type="Node3D" parent="Positions/Zigzag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 2, -20.3)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos2" type="Node3D" parent="Positions/Zigzag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.716, 2, -17.169)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos3" type="Node3D" parent="Positions/Zigzag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.565, 2, -13.447)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos4" type="Node3D" parent="Positions/Zigzag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.64, 2, -9.8)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="RopeAttack" type="Node3D" parent="Positions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -14.941)
+visible = false
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Laps" type="Node3D" parent="Positions"]
+
+[node name="Pos1" type="Node3D" parent="Positions/Laps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.421, 2, -19.174)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos2" type="Node3D" parent="Positions/Laps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.958, 2, -19.355)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos3" type="Node3D" parent="Positions/Laps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.055, 2, -10.846)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"
+
+[node name="Pos4" type="Node3D" parent="Positions/Laps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.421, 2, -10.79)
+script = ExtResource("5_2h26n")
+metadata/_custom_type_script = "uid://btdutlwxnxnie"

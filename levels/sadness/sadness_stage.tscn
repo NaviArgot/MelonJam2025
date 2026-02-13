@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxts5txqdhaoq"]
 
-[ext_resource type="Script" uid="uid://cwnbmsliuwyg5" path="res://levels/sadness_stage.gd" id="1_ii1wi"]
+[ext_resource type="Script" uid="uid://cwnbmsliuwyg5" path="res://levels/sadness/sadness_stage.gd" id="1_ii1wi"]
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_10qj4"]
-[ext_resource type="PackedScene" uid="uid://dyn0hlb7wu5mn" path="res://enemies/boss_sad.tscn" id="4_10qj4"]
-[ext_resource type="PackedScene" uid="uid://dqutjwv8lup7c" path="res://levels/sadness_scenario.tscn" id="4_ii1wi"]
+[ext_resource type="PackedScene" uid="uid://dyn0hlb7wu5mn" path="res://enemies/sadness/boss_sad.tscn" id="4_10qj4"]
+[ext_resource type="PackedScene" uid="uid://dqutjwv8lup7c" path="res://levels/sadness/sadness_scenario.tscn" id="4_ii1wi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ii1wi"]
 size = Vector3(24.403503, 10.362183, 12.545044)

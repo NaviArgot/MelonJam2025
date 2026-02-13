@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyn0hlb7wu5mn"]
 
-[ext_resource type="Script" uid="uid://bnkqp02mwbhkp" path="res://enemies/boss_sad.gd" id="1_v87rw"]
+[ext_resource type="Script" uid="uid://bnkqp02mwbhkp" path="res://enemies/sadness/boss_sad.gd" id="1_v87rw"]
 [ext_resource type="Texture2D" uid="uid://qumes5aidh4l" path="res://assets/textures/sad_mask.png" id="2_aocg6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vdhmo"]

@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 			pos,
 			Basis.from_euler(rot),
 			1.0,
-			5.0,
+			bulletSpeed,
 			MovementFactory.linear.bind(bulletSpeed),
 			func (): queue_free()
 			)

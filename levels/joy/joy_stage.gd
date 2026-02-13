@@ -12,7 +12,14 @@ func _ready() -> void:
 	$BattleStart.body_entered.connect(_on_body_entered)
 	$Boss.half_life.connect(_on_half_life)
 	$Boss.death.connect(_on_boss_death)
-	pass # Replace with function body.
+	var ropePos : Vector3 = $Positions/RopeAttack.global_position
+	var zigzagPos : Array[Vector3] = []
+	var lapsPos : Array[Vector3] = []
+	for child in $Positions/Zigzag.get_children():
+		zigzagPos.append(child.global_position)
+	for child in $Positions/Laps.get_children():
+		lapsPos.append(child.global_position)
+	$Boss.init(ropePos, zigzagPos, lapsPos)
 
 func playMusic():
 	GlobalAudio.playMusicWithLoop(bgIntro, bgLoop)

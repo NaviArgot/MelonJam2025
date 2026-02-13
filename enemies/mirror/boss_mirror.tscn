@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://ciqk7qspofob5"]
+
+[ext_resource type="Script" uid="uid://cdhpd83y57gtm" path="res://enemies/mirror/boss_mirror.gd" id="1_y5tgl"]
+[ext_resource type="Texture2D" uid="uid://7elrcdf1ek1m" path="res://assets/textures/mirror_front_shot.png" id="2_5u5kf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y5tgl"]
+size = Vector3(1, 2.3506775, 0.32336426)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nr3q"]
+size = Vector3(1.3603058, 2.2994614, 1.5635376)
+
+[sub_resource type="Animation" id="Animation_t3xrb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q36jn"]
+resource_name = "bang_front"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_pihnv"]
+resource_name = "warp"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 3.482202, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.6, 1), Vector3(0, 1.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ws3lr"]
+_data = {
+&"RESET": SubResource("Animation_t3xrb"),
+&"bang_front": SubResource("Animation_q36jn"),
+&"warp": SubResource("Animation_pihnv")
+}
+
+[node name="BossMirror" type="CharacterBody3D"]
+script = ExtResource("1_y5tgl")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.04
+shaded = true
+texture_filter = 0
+texture = ExtResource("2_5u5kf")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03817749, -0.07032776, 0.008392334)
+shape = SubResource("BoxShape3D_y5tgl")
+
+[node name="DamageArea" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15283966, -0.033489227, -0.04727173)
+shape = SubResource("BoxShape3D_2nr3q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ws3lr")
+}

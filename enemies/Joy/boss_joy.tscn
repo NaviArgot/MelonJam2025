@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vngbfhq0kq8f"]
+[gd_scene load_steps=8 format=3 uid="uid://vngbfhq0kq8f"]
 
 [ext_resource type="Script" uid="uid://dr66rggym83rx" path="res://enemies/Joy/boss_joy.gd" id="1_vc2r0"]
 [ext_resource type="Texture2D" uid="uid://qac8o2ssg8f6" path="res://assets/models/boss_joy_Joy_mask.png" id="2_vc2r0"]
 [ext_resource type="Script" uid="uid://dkvnm7ysrklfj" path="res://enemies/Joy/bs_rope.gd" id="3_4t0i5"]
+[ext_resource type="Script" uid="uid://cuqe1hxuqvmi" path="res://enemies/Joy/bs_sides.gd" id="4_3qj5d"]
+[ext_resource type="Script" uid="uid://uetmaeaktslk" path="res://enemies/Joy/bs_directed.gd" id="5_ckf4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d08u"]
 size = Vector3(1.593689, 1.7593384, 0.36224365)
@@ -43,3 +45,17 @@ twirlsPerSec = 0.2
 arms = 3
 originator = NodePath("..")
 metadata/_custom_type_script = "uid://dkvnm7ysrklfj"
+
+[node name="BS_Sides" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7839388, 0)
+script = ExtResource("4_3qj5d")
+amplitude = 90.0
+originator = NodePath("..")
+metadata/_custom_type_script = "uid://cuqe1hxuqvmi"
+
+[node name="BS_Directed" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88609433, 0)
+script = ExtResource("5_ckf4k")
+bulletSpeed = 5.0
+originator = NodePath("..")
+metadata/_custom_type_script = "uid://uetmaeaktslk"
