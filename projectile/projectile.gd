@@ -18,9 +18,10 @@ var initialRotation : Basis
 
 func faceTowards(dir : Vector3) -> void:
 	if dir.length_squared() < 0.01: dir = Vector3.FORWARD
+	moveDirection = dir
 	var theta := atan2(dir.z, dir.x) # rotation in y axis
-	var phi := atan2(dir.y, dir.x) # rotation in z axis
-	initialRotation = Basis.from_euler(Vector3(0, theta, phi))
+	var phi := atan2(dir.y, dir.z) # rotation in z axis
+	initialRotation = Basis.from_euler(Vector3(phi, -theta, 0.0))
 
 func _updatePos(time):
 	position = origin + initialRotation * data.movement.getPosition(time)
