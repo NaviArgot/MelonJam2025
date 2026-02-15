@@ -1,10 +1,10 @@
 class_name SpawnerRope
 extends ProjectileSpawner
 
-@export var bulletSpeed : float = 3.0
 @export var bulletsPerSec : int = 50
 @export var twirlsPerSec : float = 0.0
 @export var arms : int = 1
+@export var initialAngle : float = 0.0
 @export var arcHeight : float
 @export var arcAmplitude : float
 
@@ -32,14 +32,11 @@ func _physics_process(delta: float) -> void:
 				sin(time * PI * 1/arcAmplitude),
 				0.0
 				) * arcHeight
+		var initRad = deg_to_rad(initialAngle)
 		var dir = Vector3(
-			cos(TAU/arms * currArm + angle),
+			cos(TAU/arms * currArm + angle + initRad),
 			0.0,
-			sin(TAU/arms * currArm + angle),
+			sin(TAU/arms * currArm + angle + initRad),
 			)
-		var instance : Projectile = projectile.instantiate()
-		instance.origin = pos
-		instance.faceTowards(dir)
-		instance.data = projectileData
+		spawnProjectile(pos, dir)
 		currArm = (currArm + 1) % arms
-		getScene().add_child(instance)

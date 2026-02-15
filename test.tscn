@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://docl1bj08ubgo"]
+[gd_scene load_steps=23 format=3 uid="uid://docl1bj08ubgo"]
 
 [ext_resource type="Script" uid="uid://drgf7yteur42o" path="res://test.gd" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cvk25lr6webe3" path="res://test_scene.gd" id="1_xersf"]
 [ext_resource type="Script" uid="uid://c8nc450g4kewf" path="res://spawner/spawner_rope.gd" id="3_vbegm"]
 [ext_resource type="MeshLibrary" uid="uid://dv8uklvjyigq0" path="res://assets/meshlibs/entrance.meshlib" id="4_ppyta"]
+[ext_resource type="Script" uid="uid://bm2bxvhpypex0" path="res://spawner/spawner_sides.gd" id="7_ehkex"]
+[ext_resource type="Script" uid="uid://c2ciqswas4ey1" path="res://spawner/spawner_player_directed.gd" id="8_xersf"]
 [ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="9_00tp4"]
+[ext_resource type="Script" uid="uid://cj7un1ocyhh5j" path="res://spawner/spawner_line.gd" id="9_77dp3"]
 [ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="10_77dp3"]
 [ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="11_5tkv4"]
 
@@ -22,6 +25,37 @@ lifetime = 10.0
 movement = SubResource("Resource_ehkex")
 metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
+[sub_resource type="Resource" id="Resource_00tp4"]
+script = ExtResource("10_77dp3")
+speed = 3.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_77dp3"]
+script = ExtResource("11_5tkv4")
+lifetime = 10.0
+movement = SubResource("Resource_00tp4")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_5tkv4"]
+script = ExtResource("10_77dp3")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_mhym6"]
+script = ExtResource("11_5tkv4")
+lifetime = 10.0
+movement = SubResource("Resource_5tkv4")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_a3se8"]
+script = ExtResource("10_77dp3")
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_uty7l"]
+script = ExtResource("11_5tkv4")
+movement = SubResource("Resource_a3se8")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
 [sub_resource type="Environment" id="Environment_g14j6"]
 background_mode = 1
 background_color = Color(0.7644471, 0.629316, 0.92270434, 1)
@@ -31,7 +65,6 @@ ambient_light_sky_contribution = 0.65
 
 [sub_resource type="Resource" id="Resource_0m0f1"]
 script = ExtResource("10_77dp3")
-speed = 0.4
 metadata/_custom_type_script = "uid://dox7nwoejsjv0"
 
 [sub_resource type="Resource" id="Resource_b0q6j"]
@@ -49,7 +82,6 @@ script = ExtResource("1_37kl0")
 speed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestPlayer"]
-visible = false
 mesh = SubResource("BoxMesh_8uh7m")
 skeleton = NodePath("../..")
 
@@ -57,12 +89,39 @@ skeleton = NodePath("../..")
 script = ExtResource("3_vbegm")
 twirlsPerSec = 0.2
 arms = 3
+initialAngle = 90.0
 arcHeight = 2.0
 arcAmplitude = 1.0
 projectile = ExtResource("9_00tp4")
 projectileData = SubResource("Resource_xersf")
 originator = NodePath("..")
+active = false
 metadata/_custom_type_script = "uid://c8nc450g4kewf"
+
+[node name="SpawnerSides" type="Node3D" parent="TestPlayer"]
+script = ExtResource("7_ehkex")
+amplitude = 90.0
+projectile = ExtResource("9_00tp4")
+projectileData = SubResource("Resource_77dp3")
+active = false
+metadata/_custom_type_script = "uid://bm2bxvhpypex0"
+
+[node name="SpawnerPlayerDirected" type="Node3D" parent="TestPlayer"]
+script = ExtResource("8_xersf")
+projectile = ExtResource("9_00tp4")
+projectileData = SubResource("Resource_mhym6")
+active = false
+metadata/_custom_type_script = "uid://c2ciqswas4ey1"
+
+[node name="SpawnerConsecutiveLine" type="Node3D" parent="TestPlayer"]
+script = ExtResource("9_77dp3")
+distance = 5.0
+lineAngle = 90.0
+initialShotAngle = 90.0
+shotAngleDelta = 180.0
+projectile = ExtResource("9_00tp4")
+projectileData = SubResource("Resource_uty7l")
+metadata/_custom_type_script = "uid://cj7un1ocyhh5j"
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4_ppyta")
@@ -76,9 +135,8 @@ environment = SubResource("Environment_g14j6")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.1799774, 17.275633)
+size = 16.24471
 
 [node name="SimpleBullet" parent="." instance=ExtResource("9_00tp4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4813023, 0)
 data = SubResource("Resource_b0q6j")
-origin = Vector3(0, 5.4813023, 0)
 moveDirection = Vector3(0, 0, 1)
