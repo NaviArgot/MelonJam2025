@@ -1,8 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn1d7cpoyias7"]
+[gd_scene load_steps=11 format=3 uid="uid://dn1d7cpoyias7"]
 
 [ext_resource type="Script" uid="uid://ct537f46cg57d" path="res://weapons/slingshot.gd" id="1_4w2j0"]
 [ext_resource type="Texture2D" uid="uid://d0talc0gkmr11" path="res://assets/ph_ranged.png" id="2_4lsmj"]
+[ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="2_ntfpw"]
 [ext_resource type="AudioStream" uid="uid://d31clo8dsqnhc" path="res://assets/sounds/Shoot.wav" id="3_4lsmj"]
+[ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="3_u4nl3"]
+[ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="4_8h5sv"]
+
+[sub_resource type="Resource" id="Resource_shop7"]
+script = ExtResource("3_u4nl3")
+speed = 10.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_pay10"]
+script = ExtResource("4_8h5sv")
+damage = 0.0
+lifetime = 5.0
+movement = SubResource("Resource_shop7")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xymiu"]
 transparency = 2
@@ -16,6 +31,8 @@ material = SubResource("StandardMaterial3D_xymiu")
 
 [node name="Slingshot" type="Node3D"]
 script = ExtResource("1_4w2j0")
+projectile = ExtResource("2_ntfpw")
+projectileData = SubResource("Resource_pay10")
 distance = 0.8
 damage = 2.0
 
