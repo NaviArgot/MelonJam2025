@@ -1,10 +1,18 @@
-class_name ProjectileSpawner
+@abstract class_name ProjectileSpawner
 extends Node3D
+
+signal finished
 
 @export var projectile : PackedScene
 @export var projectileData : ProjectileData
 @export var originator : Node3D = null
 @export var active : bool = true
+
+var _emitted : bool = false
+
+func emit_finished_once():
+	if not _emitted:
+		finished.emit()
 
 func spawnProjectile(pos: Vector3, dir: Vector3):
 	var instance : Projectile = projectile.instantiate()

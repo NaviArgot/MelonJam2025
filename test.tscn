@@ -1,59 +1,106 @@
-[gd_scene load_steps=23 format=3 uid="uid://docl1bj08ubgo"]
+[gd_scene load_steps=38 format=3 uid="uid://docl1bj08ubgo"]
 
 [ext_resource type="Script" uid="uid://drgf7yteur42o" path="res://test.gd" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cvk25lr6webe3" path="res://test_scene.gd" id="1_xersf"]
 [ext_resource type="Script" uid="uid://c8nc450g4kewf" path="res://spawner/spawner_rope.gd" id="3_vbegm"]
+[ext_resource type="Script" uid="uid://d1s0l18y6t60" path="res://spawner/spawner_rope_data.gd" id="4_5tkv4"]
+[ext_resource type="PackedScene" uid="uid://cob5mv0wrcsnk" path="res://projectile/scenes/bouncy_bullet.tscn" id="4_77dp3"]
 [ext_resource type="MeshLibrary" uid="uid://dv8uklvjyigq0" path="res://assets/meshlibs/entrance.meshlib" id="4_ppyta"]
 [ext_resource type="Script" uid="uid://bm2bxvhpypex0" path="res://spawner/spawner_sides.gd" id="7_ehkex"]
 [ext_resource type="Script" uid="uid://c2ciqswas4ey1" path="res://spawner/spawner_player_directed.gd" id="8_xersf"]
 [ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="9_00tp4"]
 [ext_resource type="Script" uid="uid://cj7un1ocyhh5j" path="res://spawner/spawner_line.gd" id="9_77dp3"]
+[ext_resource type="Script" uid="uid://cactupe05m643" path="res://spawner/spawner_sides_data.gd" id="9_mhym6"]
 [ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="10_77dp3"]
+[ext_resource type="PackedScene" uid="uid://coeqdfdw6vt1q" path="res://projectile/scenes/test_droplet.tscn" id="10_a3se8"]
 [ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="11_5tkv4"]
+[ext_resource type="Script" uid="uid://daag72lxu7mni" path="res://spawner/spawner_player_directed_data.gd" id="12_a3se8"]
+[ext_resource type="Script" uid="uid://c8qlux5ixbgk1" path="res://spawner/spawner_line_data.gd" id="14_uty7l"]
+[ext_resource type="Script" uid="uid://dweqfttf78j4f" path="res://spawner/spawner_ring.gd" id="16_45l4g"]
+[ext_resource type="Script" uid="uid://bviidiw2qy6at" path="res://spawner/spawner_ring_data.gd" id="17_4uo0j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8uh7m"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="Resource" id="Resource_ehkex"]
-script = ExtResource("10_77dp3")
-speed = 5.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
-
-[sub_resource type="Resource" id="Resource_xersf"]
-script = ExtResource("11_5tkv4")
-lifetime = 10.0
-movement = SubResource("Resource_ehkex")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
-
-[sub_resource type="Resource" id="Resource_00tp4"]
-script = ExtResource("10_77dp3")
-speed = 3.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
-
-[sub_resource type="Resource" id="Resource_77dp3"]
-script = ExtResource("11_5tkv4")
-lifetime = 10.0
-movement = SubResource("Resource_00tp4")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
-
-[sub_resource type="Resource" id="Resource_5tkv4"]
-script = ExtResource("10_77dp3")
-speed = 5.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+[sub_resource type="Resource" id="Resource_45l4g"]
+script = ExtResource("4_5tkv4")
+twirlsPerSec = 0.2
+arms = 3
+arcHeight = 2.0
+arcAmplitude = 0.8
+metadata/_custom_type_script = "uid://d1s0l18y6t60"
 
 [sub_resource type="Resource" id="Resource_mhym6"]
-script = ExtResource("11_5tkv4")
-lifetime = 10.0
-movement = SubResource("Resource_5tkv4")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+script = ExtResource("10_77dp3")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
 
 [sub_resource type="Resource" id="Resource_a3se8"]
+script = ExtResource("11_5tkv4")
+movement = SubResource("Resource_mhym6")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_4uo0j"]
+script = ExtResource("9_mhym6")
+bulletCooldown = 1.0
+amplitude = 90.0
+metadata/_custom_type_script = "uid://cactupe05m643"
+
+[sub_resource type="Resource" id="Resource_uty7l"]
+script = ExtResource("10_77dp3")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_pdf00"]
+script = ExtResource("11_5tkv4")
+lifetime = 5.0
+movement = SubResource("Resource_uty7l")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_vxl6d"]
+script = ExtResource("12_a3se8")
+metadata/_custom_type_script = "uid://daag72lxu7mni"
+
+[sub_resource type="Resource" id="Resource_a6gra"]
+script = ExtResource("10_77dp3")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_dwqlq"]
+script = ExtResource("11_5tkv4")
+movement = SubResource("Resource_a6gra")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_eski5"]
+script = ExtResource("14_uty7l")
+metadata/_custom_type_script = "uid://c8qlux5ixbgk1"
+
+[sub_resource type="Resource" id="Resource_15c7i"]
 script = ExtResource("10_77dp3")
 metadata/_custom_type_script = "uid://dox7nwoejsjv0"
 
-[sub_resource type="Resource" id="Resource_uty7l"]
+[sub_resource type="Resource" id="Resource_xpeyw"]
 script = ExtResource("11_5tkv4")
-movement = SubResource("Resource_a3se8")
+movement = SubResource("Resource_15c7i")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_dpmuy"]
+script = ExtResource("17_4uo0j")
+repetitions = 0
+spawnCooldown = 0.1
+deltaAngle = 10.0
+arms = 8
+metadata/_custom_type_script = "uid://bviidiw2qy6at"
+
+[sub_resource type="Resource" id="Resource_yww54"]
+script = ExtResource("10_77dp3")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_j75vh"]
+script = ExtResource("11_5tkv4")
+lifetime = 10.0
+movement = SubResource("Resource_yww54")
 metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
 [sub_resource type="Environment" id="Environment_g14j6"]
@@ -87,41 +134,43 @@ skeleton = NodePath("../..")
 
 [node name="SpawnerRope" type="Node3D" parent="TestPlayer" node_paths=PackedStringArray("originator")]
 script = ExtResource("3_vbegm")
-twirlsPerSec = 0.2
-arms = 3
-initialAngle = 90.0
-arcHeight = 2.0
-arcAmplitude = 1.0
-projectile = ExtResource("9_00tp4")
-projectileData = SubResource("Resource_xersf")
+data = SubResource("Resource_45l4g")
+projectile = ExtResource("4_77dp3")
+projectileData = SubResource("Resource_a3se8")
 originator = NodePath("..")
 active = false
 metadata/_custom_type_script = "uid://c8nc450g4kewf"
 
 [node name="SpawnerSides" type="Node3D" parent="TestPlayer"]
 script = ExtResource("7_ehkex")
-amplitude = 90.0
-projectile = ExtResource("9_00tp4")
-projectileData = SubResource("Resource_77dp3")
+data = SubResource("Resource_4uo0j")
+projectile = ExtResource("10_a3se8")
+projectileData = SubResource("Resource_pdf00")
 active = false
 metadata/_custom_type_script = "uid://bm2bxvhpypex0"
 
 [node name="SpawnerPlayerDirected" type="Node3D" parent="TestPlayer"]
 script = ExtResource("8_xersf")
+data = SubResource("Resource_vxl6d")
 projectile = ExtResource("9_00tp4")
-projectileData = SubResource("Resource_mhym6")
+projectileData = SubResource("Resource_dwqlq")
 active = false
 metadata/_custom_type_script = "uid://c2ciqswas4ey1"
 
 [node name="SpawnerConsecutiveLine" type="Node3D" parent="TestPlayer"]
 script = ExtResource("9_77dp3")
-distance = 5.0
-lineAngle = 90.0
-initialShotAngle = 90.0
-shotAngleDelta = 180.0
+data = SubResource("Resource_eski5")
 projectile = ExtResource("9_00tp4")
-projectileData = SubResource("Resource_uty7l")
+projectileData = SubResource("Resource_xpeyw")
+active = false
 metadata/_custom_type_script = "uid://cj7un1ocyhh5j"
+
+[node name="SpawnerRing" type="Node3D" parent="TestPlayer"]
+script = ExtResource("16_45l4g")
+data = SubResource("Resource_dpmuy")
+projectile = ExtResource("4_77dp3")
+projectileData = SubResource("Resource_j75vh")
+metadata/_custom_type_script = "uid://dweqfttf78j4f"
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4_ppyta")
