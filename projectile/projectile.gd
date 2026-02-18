@@ -19,6 +19,7 @@ var quatRot : Quaternion
 
 func faceTowards(dir : Vector3) -> void:
 	if dir.is_zero_approx(): dir = Vector3.FORWARD
+	moveDirection = dir
 	var qua := Quaternion(Vector3.RIGHT, dir)
 	quatRot = qua
 
