@@ -11,6 +11,8 @@ size = Vector3(2.0043945, 2.0930634, 1.5635376)
 
 [node name="BossSad" type="CharacterBody3D"]
 script = ExtResource("1_v87rw")
+speed = null
+maxHealth = null
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 pixel_size = 0.03

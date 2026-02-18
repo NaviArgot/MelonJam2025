@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vngbfhq0kq8f"]
+[gd_scene load_steps=11 format=3 uid="uid://vngbfhq0kq8f"]
 
 [ext_resource type="Script" uid="uid://dr66rggym83rx" path="res://enemies/Joy/boss_joy.gd" id="1_vc2r0"]
 [ext_resource type="Texture2D" uid="uid://qac8o2ssg8f6" path="res://assets/models/boss_joy_Joy_mask.png" id="2_vc2r0"]
@@ -11,6 +11,44 @@ size = Vector3(1.593689, 1.7593384, 0.36224365)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nr3q"]
 size = Vector3(2.0043945, 2.0930634, 1.5635376)
+
+[sub_resource type="Animation" id="Animation_ckf4k"]
+resource_name = "walk"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_81mu0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kg8xo"]
+_data = {
+&"RESET": SubResource("Animation_81mu0"),
+&"walk": SubResource("Animation_ckf4k")
+}
 
 [node name="BossJoy" type="CharacterBody3D"]
 script = ExtResource("1_vc2r0")
@@ -59,3 +97,8 @@ script = ExtResource("5_ckf4k")
 bulletSpeed = 5.0
 originator = NodePath("..")
 metadata/_custom_type_script = "uid://uetmaeaktslk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kg8xo")
+}

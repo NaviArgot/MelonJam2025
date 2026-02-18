@@ -39,7 +39,7 @@ func startRopeAttack():
 	ropeTween = create_tween()
 	ropeTween.tween_property(self, "position", ropePos, 1.0)
 	ropeTween.tween_callback(func (): $RopeAttack.active = true)
-	ropeTween.tween_interval(15.0)
+	ropeTween.tween_interval(8.0)
 	ropeTween.tween_callback(
 		func ():
 			$RopeAttack.active = false
@@ -68,7 +68,7 @@ func startLapsAttack():
 	lapsTween = create_tween()
 	lapsTween.tween_property(self, "position", lapsPos[0], 1.0)
 	lapsTween.tween_callback(func (): $BS_Directed.active = true)
-	for i in range(1, lapsPos.size() * 4):
+	for i in range(1, lapsPos.size() * 2):
 		lapsTween.tween_property(self, "position", lapsPos[i % lapsPos.size()], 2.0)
 	lapsTween.tween_callback(
 		func ():
