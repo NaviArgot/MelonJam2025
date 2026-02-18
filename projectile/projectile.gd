@@ -15,16 +15,19 @@ extends Node3D
 
 var _time : float = 0.0
 var initialRotation : Basis
+var quatRot : Quaternion
 
 func faceTowards(dir : Vector3) -> void:
-	if dir.length_squared() < 0.01: dir = Vector3.FORWARD
-	moveDirection = dir
-	var theta := atan2(dir.z, dir.x) # rotation in y axis
-	var phi := atan2(dir.y, dir.z) # rotation in z axis
-	initialRotation = Basis.from_euler(Vector3(phi, -theta, 0.0))
+	if dir.is_zero_approx(): dir = Vector3.FORWARD
+	var qua := Quaternion(Vector3.RIGHT, dir)
+	quatRot = qua
 
 func _updatePos(time):
-	position = origin + initialRotation * data.movement.getPosition(time)
+	var pos = data.movement.getPosition(time)
+	var point = Quaternion(pos.x, pos.y, pos.z, 0)
+	var rotated = quatRot.inverse() * point * quatRot
+	var end = Vector3(rotated.x, rotated.y, rotated.z)
+	position = origin + end * Vector3(1.0, -1.0, 1.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
