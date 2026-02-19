@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://docl1bj08ubgo"]
+[gd_scene load_steps=40 format=3 uid="uid://docl1bj08ubgo"]
 
 [ext_resource type="Script" uid="uid://drgf7yteur42o" path="res://test.gd" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cvk25lr6webe3" path="res://test_scene.gd" id="1_xersf"]
@@ -18,8 +18,7 @@
 [ext_resource type="Script" uid="uid://c8qlux5ixbgk1" path="res://spawner/spawner_line_data.gd" id="14_uty7l"]
 [ext_resource type="Script" uid="uid://dweqfttf78j4f" path="res://spawner/spawner_ring.gd" id="16_45l4g"]
 [ext_resource type="Script" uid="uid://bviidiw2qy6at" path="res://spawner/spawner_ring_data.gd" id="17_4uo0j"]
-[ext_resource type="Script" uid="uid://bx52u37hkr2xw" path="res://spawner/spawner_area.gd" id="18_vxl6d"]
-[ext_resource type="Script" uid="uid://dgw014btkyuok" path="res://spawner/spawner_area_data.gd" id="19_eski5"]
+[ext_resource type="Script" uid="uid://dafmgu1lfsfe1" path="res://projectile/movement/param_sinoidal_vertical.gd" id="18_eski5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxl6d"]
 transparency = 1
@@ -95,39 +94,19 @@ metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 script = ExtResource("17_4uo0j")
 repetitions = 0
 spawnCooldown = 0.1
-deltaAngle = 10.0
 arms = 8
 metadata/_custom_type_script = "uid://bviidiw2qy6at"
 
 [sub_resource type="Resource" id="Resource_yww54"]
-script = ExtResource("10_77dp3")
+script = ExtResource("18_eski5")
 speed = 5.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+amplitude = 3.0
+metadata/_custom_type_script = "uid://dafmgu1lfsfe1"
 
 [sub_resource type="Resource" id="Resource_j75vh"]
 script = ExtResource("11_5tkv4")
 lifetime = 10.0
 movement = SubResource("Resource_yww54")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
-
-[sub_resource type="BoxMesh" id="BoxMesh_vxl6d"]
-
-[sub_resource type="Resource" id="Resource_rrpoi"]
-script = ExtResource("19_eski5")
-spawnCooldown = 1.0
-direction = Vector3(0, -1, 0)
-area = SubResource("BoxMesh_vxl6d")
-metadata/_custom_type_script = "uid://dgw014btkyuok"
-
-[sub_resource type="Resource" id="Resource_34fux"]
-script = ExtResource("10_77dp3")
-speed = 5.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
-
-[sub_resource type="Resource" id="Resource_ppv7d"]
-script = ExtResource("11_5tkv4")
-lifetime = 2.0
-movement = SubResource("Resource_34fux")
 metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
 [sub_resource type="Environment" id="Environment_g14j6"]
@@ -153,7 +132,6 @@ script = ExtResource("1_xersf")
 
 [node name="TestPlayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.0287266, 0)
-visible = false
 script = ExtResource("1_37kl0")
 speed = 5.0
 
@@ -199,16 +177,7 @@ script = ExtResource("16_45l4g")
 data = SubResource("Resource_dpmuy")
 projectile = ExtResource("4_77dp3")
 projectileData = SubResource("Resource_j75vh")
-active = false
 metadata/_custom_type_script = "uid://dweqfttf78j4f"
-
-[node name="SpawnerArea" type="Node3D" parent="TestPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6518235, 1.7376807)
-script = ExtResource("18_vxl6d")
-data = SubResource("Resource_rrpoi")
-projectile = ExtResource("10_a3se8")
-projectileData = SubResource("Resource_ppv7d")
-metadata/_custom_type_script = "uid://bx52u37hkr2xw"
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4_ppyta")

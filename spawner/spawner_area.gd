@@ -1,3 +1,4 @@
+@tool
 class_name SpawnerArea
 extends ProjectileSpawner
 
@@ -18,11 +19,13 @@ func isInside(point : Vector3) -> bool:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Engine.is_editor_hint(): return
 	spawnCool = TimedCount.new(data.spawnCooldown)
 	aabb = data.area.get_aabb()
 	collisionMesh = data.area.generate_triangle_mesh()
 
 func _physics_process(delta: float) -> void:
+	if Engine.is_editor_hint(): return
 	spawnCool.update(delta)
 	if not active: return
 	time += delta
@@ -46,3 +49,15 @@ func _physics_process(delta: float) -> void:
 			spawnProjectile(aabb.get_center(), data.direction)
 	if data.lifetime > 0.0 and time >= data.lifetime:
 		emit_finished_once()
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		if data and data.area:
+			if get_child_count() == 0:
+				_tool_mesh = MeshInstance3D.new()
+				_tool_mesh.mesh = data.area 
+				add_child(_tool_mesh)
+		else:
+			if _tool_mesh:
+				remove_child(_tool_mesh)
+				_tool_mesh = null

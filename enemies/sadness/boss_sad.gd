@@ -1,5 +1,7 @@
 class_name BossSad extends CharacterBody3D
 
+signal rain_attack_start
+signal rain_attack_finished
 signal half_life
 signal death
 
@@ -10,12 +12,35 @@ enum STATE {IDLE, BASE, ATTACK1, ATTACK2}
 
 var health: float = 0.0
 
+var rainTween : Tween
 
 func getScene():
 	return get_tree().root.get_children()[-1]
 
+func startAttackRain(center: Vector3, radius: float, laps : int):
+	if rainTween: return
+	rainTween = create_tween()
+	rainTween.tween_property(self, "position", center, 1.0)
+	rainTween.tween_property(self, "position", _circle(0.0, center, radius), 1.0)
+	rainTween.tween_callback(func (): rain_attack_start.emit())
+	rainTween.tween_method(_moveCircle.bind(center, radius), 0.0, 2.0, 10.0)
+	rainTween.tween_callback(
+		func ():
+			rainTween = null
+			rain_attack_finished.emit()
+	)
+
+func _moveCircle(weight: float, center: Vector3, radius: float):
+	position = _circle(weight, center, radius)
+
+func _circle(weight: float, center: Vector3, radius: float) -> Vector3:
+	var newpos := Vector3.ZERO
+	newpos.x = cos(weight * TAU) * radius
+	newpos.z = sin(weight * TAU) * radius
+	return newpos + center
+
 func start():
-	state = STATE.BASE
+	startAttackRain(Vector3(0.0, 2.0, -14.5), 5.0, 1)
 
 func getPlayerDir():
 	var playerPos = PlayerManager.getPosition()
@@ -28,29 +53,12 @@ func takeDamage(damage: float):
 func _ready() -> void:
 	health = maxHealth
 	$DamageArea.area_entered.connect(_onDamageAreaEntered)
-	coolSelection.reset()
 	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity = get_gravity() * delta
-	match state:
-		STATE.IDLE:
-			pass
-		STATE.BASE:
-			base()
-		STATE.ATTACK1:
-			pass
-			#attack1()
-		STATE.ATTACK2:
-			pass
-			#attack2()
 	
 	$Label3D.text = "HP: %d"%[health]
-	
-	coolChangeTarget.update(delta)
-	coolBaseBullet.update(delta)
-	if not isAttacking:
-		coolSelection.update(delta)
 	
 	if health <= maxHealth/2:
 		half_life.emit()

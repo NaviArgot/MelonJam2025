@@ -10,6 +10,8 @@ var _state : STATES = STATES.MOVING
 func _ready() -> void:
 	super._ready()
 	spawner.active = false
+	spawner.originator = originator
+	spawner.projectileData.damage = data.damage
 	spawner.finished.connect(func (): queue_free())
 
 func _enable_spawner():

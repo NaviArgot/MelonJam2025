@@ -28,7 +28,7 @@ func _updatePos(time):
 	var point = Quaternion(pos.x, pos.y, pos.z, 0)
 	var rotated = quatRot.inverse() * point * quatRot
 	var end = Vector3(rotated.x, rotated.y, rotated.z)
-	position = origin + end * Vector3(1.0, -1.0, 1.0)
+	position = origin + end * Vector3(1.0, -1.0, -1.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

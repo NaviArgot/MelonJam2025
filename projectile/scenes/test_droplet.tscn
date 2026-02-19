@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dweqfttf78j4f" path="res://spawner/spawner_ring.gd" id="4_10v5n"]
 [ext_resource type="Script" uid="uid://bviidiw2qy6at" path="res://spawner/spawner_ring_data.gd" id="5_rlbat"]
 [ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="6_wu045"]
-[ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="7_h2axe"]
+[ext_resource type="Script" uid="uid://dafmgu1lfsfe1" path="res://projectile/movement/param_sinoidal_vertical.gd" id="7_wu045"]
 [ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="8_wagcl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c1bb5"]
@@ -19,18 +19,20 @@ radius = 0.3658665
 script = ExtResource("5_rlbat")
 repetitions = 5
 spawnCooldown = 0.1
-arms = 8
+arms = 6
 metadata/_custom_type_script = "uid://bviidiw2qy6at"
 
-[sub_resource type="Resource" id="Resource_cyg72"]
-script = ExtResource("7_h2axe")
+[sub_resource type="Resource" id="Resource_h2axe"]
+script = ExtResource("7_wu045")
 speed = 5.0
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+frequency = 0.5
+metadata/_custom_type_script = "uid://dafmgu1lfsfe1"
 
 [sub_resource type="Resource" id="Resource_wqqpw"]
 script = ExtResource("8_wagcl")
 damage = 5.0
-movement = SubResource("Resource_cyg72")
+lifetime = 10.0
+movement = SubResource("Resource_h2axe")
 metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
 [node name="TestDroplet" type="Node3D" node_paths=PackedStringArray("visuals", "spawner")]
@@ -64,9 +66,10 @@ texture_filter = 0
 texture = ExtResource("3_wu045")
 
 [node name="SpawnerRing" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6380588, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("4_10v5n")
 data = SubResource("Resource_ea5dp")
 projectile = ExtResource("6_wu045")
 projectileData = SubResource("Resource_wqqpw")
+active = false
 metadata/_custom_type_script = "uid://dweqfttf78j4f"

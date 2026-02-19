@@ -12,7 +12,8 @@ func _ready() -> void:
 	$BattleStart.body_entered.connect(_on_body_entered)
 	$Boss.half_life.connect(_on_half_life)
 	$Boss.death.connect(_on_boss_death)
-	pass # Replace with function body.
+	$Boss.rain_attack_start.connect(_on_rain_attack_start)
+	$Boss.rain_attack_finished.connect(_on_rain_attack_finished)
 
 func playMusic():
 	await DialogueSystem.dialogue_finished
@@ -21,8 +22,6 @@ func playMusic():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
 
 func battleStart():
 	DialogueSystem.showDialogueCharacter(
@@ -50,7 +49,7 @@ func battleStart():
 func battleEnd():
 	DialogueSystem.showDialogueCharacter(
 		[
-			"I lost… This is so sad…",
+			"I lost... This is so sad...",
 			"So you never stop crying? It’s so weird, it makes me want to hit you even more!",
 			"That’s what they were telling you *sniff*",
 			"So I stopped. They were right.",
@@ -105,3 +104,11 @@ func _on_boss_death():
 	$Boss.queue_free()
 	await Transitions.transition_finished
 	get_tree().change_scene_to_file("res://levels/protoscene.tscn")
+
+# Boss Attacks
+
+func _on_rain_attack_start():
+	$RainAttack.active = true
+
+func _on_rain_attack_finished():
+	$RainAttack.active = false
