@@ -14,7 +14,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	spawnCool.update(delta)
 	if not active: return
-	if data.repetitions > 0 and totalReps > data.repetitions:
+	if data.repetitions > 0 and totalReps >= data.repetitions:
 		emit_finished_once()
 		return
 	time += delta

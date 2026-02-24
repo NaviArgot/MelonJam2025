@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://docl1bj08ubgo"]
+[gd_scene load_steps=43 format=3 uid="uid://docl1bj08ubgo"]
 
 [ext_resource type="Script" uid="uid://drgf7yteur42o" path="res://test.gd" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://cvk25lr6webe3" path="res://test_scene.gd" id="1_xersf"]
@@ -18,7 +18,10 @@
 [ext_resource type="Script" uid="uid://c8qlux5ixbgk1" path="res://spawner/spawner_line_data.gd" id="14_uty7l"]
 [ext_resource type="Script" uid="uid://dweqfttf78j4f" path="res://spawner/spawner_ring.gd" id="16_45l4g"]
 [ext_resource type="Script" uid="uid://bviidiw2qy6at" path="res://spawner/spawner_ring_data.gd" id="17_4uo0j"]
-[ext_resource type="Script" uid="uid://dafmgu1lfsfe1" path="res://projectile/movement/param_sinoidal_vertical.gd" id="18_eski5"]
+[ext_resource type="Script" uid="uid://dafmgu1lfsfe1" path="res://projectile/movement/param_sinoidal_vertical.gd" id="17_pdf00"]
+[ext_resource type="Script" uid="uid://dmptm2glogt3y" path="res://projectile/movement/param_oscilating_linear.gd" id="18_4uo0j"]
+[ext_resource type="PackedScene" uid="uid://dnuwrwnjwk1mk" path="res://projectile/scenes/energy_spire.tscn" id="20_vxl6d"]
+[ext_resource type="Script" uid="uid://bcm4m7cwweb55" path="res://projectile/spire_projectile_data.gd" id="21_pdf00"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxl6d"]
 transparency = 1
@@ -79,33 +82,42 @@ metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
 [sub_resource type="Resource" id="Resource_eski5"]
 script = ExtResource("14_uty7l")
+distance = 10.0
+lineAngle = 90.0
+gapLength = 1.0
+initialShotAngle = 90.0
 metadata/_custom_type_script = "uid://c8qlux5ixbgk1"
 
 [sub_resource type="Resource" id="Resource_15c7i"]
-script = ExtResource("10_77dp3")
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+script = ExtResource("17_pdf00")
+speed = 5.0
+metadata/_custom_type_script = "uid://dafmgu1lfsfe1"
 
 [sub_resource type="Resource" id="Resource_xpeyw"]
-script = ExtResource("11_5tkv4")
+script = ExtResource("21_pdf00")
+height = 5.0
+color = Color(0.4505952, 0.87401116, 0.55911213, 1)
+lifetime = 5.0
 movement = SubResource("Resource_15c7i")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+metadata/_custom_type_script = "uid://bcm4m7cwweb55"
 
 [sub_resource type="Resource" id="Resource_dpmuy"]
 script = ExtResource("17_4uo0j")
 repetitions = 0
-spawnCooldown = 0.1
-arms = 8
+spawnCooldown = 2.0
+deltaAngle = 10.0
+arms = 32
 metadata/_custom_type_script = "uid://bviidiw2qy6at"
 
 [sub_resource type="Resource" id="Resource_yww54"]
-script = ExtResource("18_eski5")
-speed = 5.0
-amplitude = 3.0
-metadata/_custom_type_script = "uid://dafmgu1lfsfe1"
+script = ExtResource("18_4uo0j")
+distance = 15.0
+duration = 12.0
+metadata/_custom_type_script = "uid://dmptm2glogt3y"
 
 [sub_resource type="Resource" id="Resource_j75vh"]
 script = ExtResource("11_5tkv4")
-lifetime = 10.0
+lifetime = 12.0
 movement = SubResource("Resource_yww54")
 metadata/_custom_type_script = "uid://gyjkbntuqb5i"
 
@@ -116,16 +128,18 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_sky_contribution = 0.65
 
-[sub_resource type="Resource" id="Resource_0m0f1"]
-script = ExtResource("10_77dp3")
-speed = 0.5
-metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+[sub_resource type="Resource" id="Resource_34fux"]
+script = ExtResource("18_4uo0j")
+metadata/_custom_type_script = "uid://dmptm2glogt3y"
 
-[sub_resource type="Resource" id="Resource_b0q6j"]
-script = ExtResource("11_5tkv4")
-lifetime = 0.0
-movement = SubResource("Resource_0m0f1")
-metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+[sub_resource type="Resource" id="Resource_rrpoi"]
+script = ExtResource("21_pdf00")
+height = 5.0
+color = Color(0.22745098, 0.7058824, 0.41960785, 1)
+animProportion = 0.2
+lifetime = 10.0
+movement = SubResource("Resource_34fux")
+metadata/_custom_type_script = "uid://bcm4m7cwweb55"
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_xersf")
@@ -167,16 +181,16 @@ metadata/_custom_type_script = "uid://c2ciqswas4ey1"
 [node name="SpawnerConsecutiveLine" type="Node3D" parent="TestPlayer"]
 script = ExtResource("9_77dp3")
 data = SubResource("Resource_eski5")
-projectile = ExtResource("9_00tp4")
+projectile = ExtResource("20_vxl6d")
 projectileData = SubResource("Resource_xpeyw")
-active = false
 metadata/_custom_type_script = "uid://cj7un1ocyhh5j"
 
 [node name="SpawnerRing" type="Node3D" parent="TestPlayer"]
 script = ExtResource("16_45l4g")
 data = SubResource("Resource_dpmuy")
-projectile = ExtResource("4_77dp3")
+projectile = ExtResource("9_00tp4")
 projectileData = SubResource("Resource_j75vh")
+active = false
 metadata/_custom_type_script = "uid://dweqfttf78j4f"
 
 [node name="GridMap" type="GridMap" parent="."]
@@ -193,7 +207,6 @@ environment = SubResource("Environment_g14j6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.1799774, 17.275633)
 size = 16.24471
 
-[node name="SimpleBullet" parent="." instance=ExtResource("9_00tp4")]
-data = SubResource("Resource_b0q6j")
-origin = Vector3(0, 5, 0)
-moveDirection = Vector3(1, 1, 2)
+[node name="SimpleBullet" parent="." instance=ExtResource("20_vxl6d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8662863, 4.131507)
+data = SubResource("Resource_rrpoi")

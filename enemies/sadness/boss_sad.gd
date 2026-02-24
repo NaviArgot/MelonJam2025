@@ -2,6 +2,11 @@ class_name BossSad extends CharacterBody3D
 
 signal rain_attack_start
 signal rain_attack_finished
+signal wave_attack_start
+signal wave_attack_finished
+signal tunneling_attack_start
+signal tunneling_attack_trigger (x: float, z: float)
+signal tunneling_attack_finished
 signal half_life
 signal death
 
@@ -13,6 +18,7 @@ enum STATE {IDLE, BASE, ATTACK1, ATTACK2}
 var health: float = 0.0
 
 var rainTween : Tween
+var waveTween : Tween
 
 func getScene():
 	return get_tree().root.get_children()[-1]
@@ -29,6 +35,22 @@ func startAttackRain(center: Vector3, radius: float, laps : int):
 			rainTween = null
 			rain_attack_finished.emit()
 	)
+	
+func startAttackWave(pos: Vector3, duration: float):
+	if waveTween: return
+	waveTween = create_tween()
+	waveTween.tween_property(self, "position", pos, 1.0)
+	waveTween.tween_callback(func (): wave_attack_start.emit())
+	waveTween.tween_interval(duration)
+	waveTween.tween_callback(
+		func ():
+			waveTween = null
+			wave_attack_finished.emit()
+	)
+
+func startAttackTunneling(start: Vector3, end: Vector3, cooldown: float):
+	pass
+
 
 func _moveCircle(weight: float, center: Vector3, radius: float):
 	position = _circle(weight, center, radius)
