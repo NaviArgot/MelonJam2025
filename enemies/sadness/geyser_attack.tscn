@@ -1,0 +1,220 @@
+[gd_scene load_steps=22 format=3 uid="uid://dvnc3jbunx8p4"]
+
+[ext_resource type="Script" uid="uid://dt3bxkahq2gsy" path="res://enemies/sadness/geyser_attack.gd" id="1_fralg"]
+[ext_resource type="Script" uid="uid://dweqfttf78j4f" path="res://spawner/spawner_ring.gd" id="1_w1kn8"]
+[ext_resource type="Script" uid="uid://bviidiw2qy6at" path="res://spawner/spawner_ring_data.gd" id="2_dtygb"]
+[ext_resource type="PackedScene" uid="uid://dnuwrwnjwk1mk" path="res://projectile/scenes/energy_spire.tscn" id="3_3fbuj"]
+[ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="4_05j0o"]
+[ext_resource type="Script" uid="uid://bcm4m7cwweb55" path="res://projectile/spire_projectile_data.gd" id="5_fralg"]
+[ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="6_co6to"]
+[ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="7_7hh28"]
+[ext_resource type="Texture2D" uid="uid://dupfbjl6tijls" path="res://assets/ph_water_particle.png" id="9_co6to"]
+
+[sub_resource type="Resource" id="Resource_bcm4l"]
+script = ExtResource("2_dtygb")
+spawnCooldown = 0.0
+metadata/_custom_type_script = "uid://bviidiw2qy6at"
+
+[sub_resource type="Resource" id="Resource_ivjd6"]
+script = ExtResource("4_05j0o")
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_40p3h"]
+script = ExtResource("5_fralg")
+height = 4.0
+color = Color(0.23207432, 0.25164455, 1, 1)
+animProportion = 0.2
+damage = 5.0
+lifetime = 2.0
+movement = SubResource("Resource_ivjd6")
+metadata/_custom_type_script = "uid://bcm4m7cwweb55"
+
+[sub_resource type="Resource" id="Resource_e1lmk"]
+script = ExtResource("2_dtygb")
+repetitions = 3
+spawnCooldown = 0.5
+arms = 8
+metadata/_custom_type_script = "uid://bviidiw2qy6at"
+
+[sub_resource type="Resource" id="Resource_w7hvo"]
+script = ExtResource("4_05j0o")
+speed = 3.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_dn3sy"]
+script = ExtResource("7_7hh28")
+lifetime = 10.0
+movement = SubResource("Resource_w7hvo")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j74w3"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("9_co6to")
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_7hh28"]
+material = SubResource("StandardMaterial3D_j74w3")
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_ivjd6"]
+_data = [Vector2(0.32142857, 0.6264592), 0.0, -0.49202955, 0, 0, Vector2(0.85204077, 0.14396894), -0.21038511, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_40p3h"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DigParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpawnerRing:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpireSpawn:active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e1lmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpotLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DigParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpawnerRing:active")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpireSpawn:active")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7hvo"]
+_data = {
+&"RESET": SubResource("Animation_e1lmk"),
+&"attack": SubResource("Animation_40p3h")
+}
+
+[node name="GeyserAttack" type="Node3D"]
+script = ExtResource("1_fralg")
+
+[node name="SpireSpawn" type="Node3D" parent="."]
+script = ExtResource("1_w1kn8")
+data = SubResource("Resource_bcm4l")
+projectile = ExtResource("3_3fbuj")
+projectileData = SubResource("Resource_40p3h")
+active = false
+metadata/_custom_type_script = "uid://dweqfttf78j4f"
+
+[node name="SpawnerRing" type="Node3D" parent="."]
+script = ExtResource("1_w1kn8")
+data = SubResource("Resource_e1lmk")
+projectile = ExtResource("6_co6to")
+projectileData = SubResource("Resource_dn3sy")
+active = false
+metadata/_custom_type_script = "uid://dweqfttf78j4f"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+visible = false
+spot_range = 5.842039
+spot_angle = 10.641972
+
+[node name="DigParticles" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 24
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+mesh = SubResource("QuadMesh_7hh28")
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 6.0
+initial_velocity_max = 8.0
+scale_amount_curve = SubResource("Curve_ivjd6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w7hvo")
+}

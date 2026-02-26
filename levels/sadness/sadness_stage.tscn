@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxts5txqdhaoq"]
+[gd_scene load_steps=21 format=3 uid="uid://cxts5txqdhaoq"]
 
 [ext_resource type="Script" uid="uid://cwnbmsliuwyg5" path="res://levels/sadness/sadness_stage.gd" id="1_ii1wi"]
 [ext_resource type="PackedScene" uid="uid://kwryfc7m7ss3" path="res://player/player.tscn" id="2_10qj4"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="11_cudks"]
 [ext_resource type="Script" uid="uid://dmptm2glogt3y" path="res://projectile/movement/param_oscilating_linear.gd" id="12_2303o"]
 [ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="13_88rc6"]
+[ext_resource type="PackedScene" uid="uid://dvnc3jbunx8p4" path="res://enemies/sadness/geyser_attack.tscn" id="14_wj2m3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ii1wi"]
 size = Vector3(24.403503, 10.362183, 12.545044)
@@ -29,8 +30,7 @@ metadata/_custom_type_script = "uid://dgw014btkyuok"
 
 [sub_resource type="Resource" id="Resource_ob37w"]
 script = ExtResource("10_wj2m3")
-repetitions = 4
-spawnCooldown = 2.0
+repetitions = 6
 arms = 32
 metadata/_custom_type_script = "uid://bviidiw2qy6at"
 
@@ -84,4 +84,10 @@ data = SubResource("Resource_ob37w")
 projectile = ExtResource("11_cudks")
 projectileData = SubResource("Resource_an2cu")
 originator = NodePath("../Boss")
+active = false
 metadata/_custom_type_script = "uid://dweqfttf78j4f"
+
+[node name="GeyserAttack" parent="." instance=ExtResource("14_wj2m3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2919536, -20.168682)
+damageSpire = 5.0
+damageBullets = 3.0

@@ -14,6 +14,9 @@ func _ready() -> void:
 	$Boss.death.connect(_on_boss_death)
 	$Boss.rain_attack_start.connect(_on_rain_attack_start)
 	$Boss.rain_attack_finished.connect(_on_rain_attack_finished)
+	$Boss.wave_attack_start.connect(_on_wave_attack_start)
+	$Boss.wave_attack_finished.connect(_on_wave_attack_finished)
+	$Boss.tunneling_attack_trigger.connect(_on_geyser_trigger)
 
 func playMusic():
 	await DialogueSystem.dialogue_finished
@@ -101,14 +104,30 @@ func _on_boss_death():
 	PlayerManager.flags["ACCEPTED_SADNESS"] = true
 	await DialogueSystem.dialogue_finished
 	Transitions.fadeOut()
-	$Boss.queue_free()
+	#$Boss.queue_free()
 	await Transitions.transition_finished
 	get_tree().change_scene_to_file("res://levels/protoscene.tscn")
 
 # Boss Attacks
 
 func _on_rain_attack_start():
+	$RainAttack.reset()
 	$RainAttack.active = true
 
 func _on_rain_attack_finished():
 	$RainAttack.active = false
+
+func _on_wave_attack_start():
+	$WaveAttack.reset()
+	$WaveAttack.active = true
+
+func _on_wave_attack_finished():
+	$WaveAttack.active = false
+
+func _on_geyser_trigger(x: float, z: float):
+	$GeyserAttack.reset()
+	$GeyserAttack.position.x = x
+	$GeyserAttack.position.z = z
+	$GeyserAttack.play()
+	await $GeyserAttack.finished
+	$Boss/AnimationPlayer.play("jump")

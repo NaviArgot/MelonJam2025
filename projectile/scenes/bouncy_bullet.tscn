@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqik3j7tucm21" path="res://projectile/bouncy_projectile.gd" id="1_r76wr"]
 [ext_resource type="Script" uid="uid://dj60wt6hbji4a" path="res://shared/areas/attack_area.gd" id="2_dlsms"]
-[ext_resource type="Texture2D" uid="uid://df5qxx5246kjh" path="res://assets/ph_bullet.png" id="3_utem3"]
+[ext_resource type="Texture2D" uid="uid://bhspwybe8r16b" path="res://assets/textures/bouncybullet.png" id="3_r76wr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c1bb5"]
 radius = 0.26479352
@@ -36,4 +36,4 @@ shape = SubResource("SphereShape3D_sa3uu")
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
-texture = ExtResource("3_utem3")
+texture = ExtResource("3_r76wr")

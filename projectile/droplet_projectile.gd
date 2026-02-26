@@ -22,13 +22,19 @@ func _enable_spawner():
 	damageArea.monitorable = false
 	visuals.visible = false
 
+func _quatRotate(pos : Vector3):
+	var point = Quaternion(pos.x, pos.y, pos.z, 0)
+	var rotated = quatRot.inverse() * point * quatRot
+	var end = Vector3(rotated.x, rotated.y, rotated.z)
+	return end * Vector3(1.0, -1.0, -1.0)
+
 func _moving_process(delta: float):
 	_time += delta
 	_updatePos(_time)
 	
 	var space_state = get_world_3d().direct_space_state
 	var start : Vector3 = global_position
-	var disp = initialRotation * data.movement.getPosition(_time + delta)
+	var disp = _quatRotate(data.movement.getPosition(_time + delta))
 	var end : Vector3 = origin + disp
 	var query = PhysicsRayQueryParameters3D.create(start, end)
 	query.collide_with_areas = false

@@ -1,16 +1,38 @@
-[gd_scene load_steps=11 format=3 uid="uid://vngbfhq0kq8f"]
+[gd_scene load_steps=27 format=3 uid="uid://vngbfhq0kq8f"]
 
 [ext_resource type="Script" uid="uid://dr66rggym83rx" path="res://enemies/Joy/boss_joy.gd" id="1_vc2r0"]
 [ext_resource type="Texture2D" uid="uid://qac8o2ssg8f6" path="res://assets/models/boss_joy_Joy_mask.png" id="2_vc2r0"]
-[ext_resource type="Script" uid="uid://dkvnm7ysrklfj" path="res://enemies/Joy/bs_rope.gd" id="3_4t0i5"]
-[ext_resource type="Script" uid="uid://cuqe1hxuqvmi" path="res://enemies/Joy/bs_sides.gd" id="4_3qj5d"]
-[ext_resource type="Script" uid="uid://uetmaeaktslk" path="res://enemies/Joy/bs_directed.gd" id="5_ckf4k"]
+[ext_resource type="Script" uid="uid://c8nc450g4kewf" path="res://spawner/spawner_rope.gd" id="3_7nrmf"]
+[ext_resource type="Script" uid="uid://d1s0l18y6t60" path="res://spawner/spawner_rope_data.gd" id="4_knawq"]
+[ext_resource type="PackedScene" uid="uid://m1ep1682ho7s" path="res://projectile/scenes/simple_bullet.tscn" id="5_os1oa"]
+[ext_resource type="Script" uid="uid://dox7nwoejsjv0" path="res://projectile/movement/param_linear.gd" id="6_dsoga"]
+[ext_resource type="Script" uid="uid://gyjkbntuqb5i" path="res://projectile/projectile_data.gd" id="7_t1h40"]
+[ext_resource type="Script" uid="uid://bm2bxvhpypex0" path="res://spawner/spawner_sides.gd" id="8_ut51s"]
+[ext_resource type="Script" uid="uid://cactupe05m643" path="res://spawner/spawner_sides_data.gd" id="9_ulx8s"]
+[ext_resource type="PackedScene" uid="uid://cob5mv0wrcsnk" path="res://projectile/scenes/bouncy_bullet.tscn" id="10_q425o"]
+[ext_resource type="Script" uid="uid://c2ciqswas4ey1" path="res://spawner/spawner_player_directed.gd" id="11_2qiph"]
+[ext_resource type="Script" uid="uid://daag72lxu7mni" path="res://spawner/spawner_player_directed_data.gd" id="12_8jxjt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4d08u"]
 size = Vector3(1.593689, 1.7593384, 0.36224365)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nr3q"]
 size = Vector3(2.0043945, 2.0930634, 1.5635376)
+
+[sub_resource type="Animation" id="Animation_81mu0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ckf4k"]
 resource_name = "walk"
@@ -29,28 +51,65 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1, 0.8, 1), Vector3(1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_81mu0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kg8xo"]
 _data = {
 &"RESET": SubResource("Animation_81mu0"),
 &"walk": SubResource("Animation_ckf4k")
 }
 
+[sub_resource type="Resource" id="Resource_sbs0k"]
+script = ExtResource("4_knawq")
+twirlsPerSec = 0.15
+arms = 3
+arcHeight = 2.0
+arcAmplitude = 1.0
+metadata/_custom_type_script = "uid://d1s0l18y6t60"
+
+[sub_resource type="Resource" id="Resource_1lfoc"]
+script = ExtResource("6_dsoga")
+speed = 5.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_ylwwa"]
+script = ExtResource("7_t1h40")
+lifetime = 5.0
+movement = SubResource("Resource_1lfoc")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_qo66k"]
+script = ExtResource("9_ulx8s")
+amplitude = 90.0
+metadata/_custom_type_script = "uid://cactupe05m643"
+
+[sub_resource type="Resource" id="Resource_7nrmf"]
+script = ExtResource("6_dsoga")
+speed = 4.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_knawq"]
+script = ExtResource("7_t1h40")
+lifetime = 5.0
+movement = SubResource("Resource_7nrmf")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
+[sub_resource type="Resource" id="Resource_x4ga5"]
+script = ExtResource("12_8jxjt")
+metadata/_custom_type_script = "uid://daag72lxu7mni"
+
+[sub_resource type="Resource" id="Resource_os1oa"]
+script = ExtResource("6_dsoga")
+speed = 4.0
+metadata/_custom_type_script = "uid://dox7nwoejsjv0"
+
+[sub_resource type="Resource" id="Resource_dsoga"]
+script = ExtResource("7_t1h40")
+lifetime = 5.0
+movement = SubResource("Resource_os1oa")
+metadata/_custom_type_script = "uid://gyjkbntuqb5i"
+
 [node name="BossJoy" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_vc2r0")
 speed = 6.0
 
@@ -75,30 +134,37 @@ shape = SubResource("BoxShape3D_2nr3q")
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5796027, 0)
 
-[node name="RopeAttack" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779096, 0)
-script = ExtResource("3_4t0i5")
-bulletSpeed = 4.0
-twirlsPerSec = 0.2
-arms = 3
-originator = NodePath("..")
-metadata/_custom_type_script = "uid://dkvnm7ysrklfj"
-
-[node name="BS_Sides" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7839388, 0)
-script = ExtResource("4_3qj5d")
-amplitude = 90.0
-originator = NodePath("..")
-metadata/_custom_type_script = "uid://cuqe1hxuqvmi"
-
-[node name="BS_Directed" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88609433, 0)
-script = ExtResource("5_ckf4k")
-bulletSpeed = 5.0
-originator = NodePath("..")
-metadata/_custom_type_script = "uid://uetmaeaktslk"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kg8xo")
 }
+
+[node name="RopeAttack" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.779096, 0)
+script = ExtResource("3_7nrmf")
+data = SubResource("Resource_sbs0k")
+projectile = ExtResource("5_os1oa")
+projectileData = SubResource("Resource_ylwwa")
+originator = NodePath("..")
+active = false
+metadata/_custom_type_script = "uid://c8nc450g4kewf"
+
+[node name="BS_Sides" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+script = ExtResource("8_ut51s")
+data = SubResource("Resource_qo66k")
+projectile = ExtResource("10_q425o")
+projectileData = SubResource("Resource_knawq")
+originator = NodePath("..")
+active = false
+metadata/_custom_type_script = "uid://bm2bxvhpypex0"
+
+[node name="BS_Directed" type="Node3D" parent="." node_paths=PackedStringArray("originator")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+script = ExtResource("11_2qiph")
+data = SubResource("Resource_x4ga5")
+projectile = ExtResource("10_q425o")
+projectileData = SubResource("Resource_dsoga")
+originator = NodePath("..")
+active = false
+metadata/_custom_type_script = "uid://c2ciqswas4ey1"

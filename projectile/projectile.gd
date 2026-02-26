@@ -14,7 +14,6 @@ extends Node3D
 @onready var damageArea : Area3D = %DamageArea
 
 var _time : float = 0.0
-var initialRotation : Basis
 var quatRot : Quaternion
 
 func faceTowards(dir : Vector3) -> void:

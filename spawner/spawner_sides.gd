@@ -8,6 +8,11 @@ var spawnCool: TimedCount
 var prevPos: Vector3 = Vector3(0.0, 0.0, 0.0)
 var forward: Vector3 = Vector3.FORWARD
 
+func reset() -> void:
+	time = 0.0
+	spawnCool.reset()
+	_emitted = false
+
 func computeForward():
 	if global_position.distance_squared_to(prevPos) < 0.1: return
 	forward = global_position - prevPos

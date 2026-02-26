@@ -11,6 +11,11 @@ var spawnCool: TimedCount
 
 var _tool_mesh : MeshInstance3D
 
+func reset() -> void:
+	time = 0.0
+	spawnCool.reset()
+	_emitted = false
+
 func isInside(point : Vector3) -> bool:
 	var result := collisionMesh.intersect_ray(
 		point, Vector3(0.0, 0.0, 0.0)
@@ -23,6 +28,7 @@ func _ready() -> void:
 	spawnCool = TimedCount.new(data.spawnCooldown)
 	aabb = data.area.get_aabb()
 	collisionMesh = data.area.generate_triangle_mesh()
+	reset()
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint(): return

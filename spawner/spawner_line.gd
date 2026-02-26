@@ -8,11 +8,17 @@ var _currBullet: int = 0
 var _maxBullets: int
 var _time : float = 0.0
 
+func reset() -> void:
+	_time = 0.0
+	_spawnCool.reset()
+	_currBullet = 0
+	_emitted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_spawnCool = TimedCount.new(data.spawnCooldown)
 	_maxBullets = int(data.distance/data.gapLength) + 1
+	reset()
 
 func _physics_process(delta: float) -> void:
 	_spawnCool.update(delta)

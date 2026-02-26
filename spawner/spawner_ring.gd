@@ -7,6 +7,12 @@ var time : float = 0.0
 var spawnCool: TimedCount
 var totalReps: int = 0
 
+func reset() -> void:
+	time = 0.0
+	spawnCool.reset()
+	totalReps = 0
+	_emitted = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnCool = TimedCount.new(data.spawnCooldown)

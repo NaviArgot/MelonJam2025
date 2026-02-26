@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyn0hlb7wu5mn"]
+[gd_scene load_steps=14 format=3 uid="uid://dyn0hlb7wu5mn"]
 
 [ext_resource type="Script" uid="uid://bnkqp02mwbhkp" path="res://enemies/sadness/boss_sad.gd" id="1_v87rw"]
 [ext_resource type="Texture2D" uid="uid://qumes5aidh4l" path="res://assets/textures/sad_mask.png" id="2_aocg6"]
@@ -10,7 +10,7 @@ size = Vector3(1.593689, 1.7593384, 0.36224365)
 [sub_resource type="BoxShape3D" id="BoxShape3D_duyu7"]
 size = Vector3(2.0043945, 2.0930634, 1.5635376)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j74w3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwark"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
@@ -19,77 +19,12 @@ albedo_texture = ExtResource("3_uwark")
 texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_34n6o"]
-material = SubResource("StandardMaterial3D_j74w3")
+material = SubResource("StandardMaterial3D_uwark")
 size = Vector2(0.3, 0.3)
 
 [sub_resource type="Curve" id="Curve_fldsh"]
 _data = [Vector2(0.32142857, 0.6264592), 0.0, -0.49202955, 0, 0, Vector2(0.85204077, 0.14396894), -0.21038511, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Animation" id="Animation_b5uya"]
-resource_name = "dig"
-length = 1.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.4, 0.7, 0.90000004, 1.0999999),
-"transitions": PackedFloat32Array(2, 2, 2, 2, 0.23325819),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.2, 0), Vector3(0, -0.4, 0), Vector3(0, -0.6, 0), Vector3(0, -3, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../CollisionShape3D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../DamageArea:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../DamageArea:monitorable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_i2rmc"]
 length = 0.001
@@ -115,6 +50,71 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DamageArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DamageArea:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b5uya"]
+resource_name = "dig"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.5, 0.8, 1.1999999),
+"transitions": PackedFloat32Array(2, 2, 2, 0.23325819),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.2, 0), Vector3(0, -0.4, 0), Vector3(0, -3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [true]
 }
 tracks/2/type = "value"
@@ -151,13 +151,47 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uwark"]
+resource_name = "jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.45062512, 2.6390204, 1),
+"update": 0,
+"values": [Vector3(0, -3, 0), Vector3(0, 3.5, 0), Vector3(0, -3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j74w3"]
+resource_name = "undig"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.3186402, 1),
+"update": 0,
+"values": [Vector3(0, -3, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p2pko"]
 _data = {
 &"RESET": SubResource("Animation_i2rmc"),
-&"dig": SubResource("Animation_b5uya")
+&"dig": SubResource("Animation_b5uya"),
+&"jump": SubResource("Animation_uwark"),
+&"undig": SubResource("Animation_j74w3")
 }
 
 [node name="BossSad" type="CharacterBody3D"]
@@ -173,13 +207,10 @@ texture = ExtResource("2_aocg6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03817749, -0.013336182, -0.024993896)
 shape = SubResource("BoxShape3D_vdhmo")
-disabled = true
 
 [node name="DamageArea" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 4
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034179688, 0.06970978, -0.04727173)
@@ -190,8 +221,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5796027, 0)
 
 [node name="DigParticles" type="CPUParticles3D" parent="."]
 emitting = false
+amount = 16
 lifetime = 2.0
 one_shot = true
+speed_scale = 1.5
 mesh = SubResource("QuadMesh_34n6o")
 direction = Vector3(0, 1, 0)
 spread = 20.0

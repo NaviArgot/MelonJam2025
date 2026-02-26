@@ -24,3 +24,5 @@ func spawnProjectile(pos: Vector3, dir: Vector3):
 
 func getScene():
 	return get_tree().root.get_children()[-1]
+
+@abstract func reset() -> void

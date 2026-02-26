@@ -9,6 +9,13 @@ var angle: float = 0.0
 var spawnCool: TimedCount
 var rotationPerSec : float
 
+func reset() -> void:
+	time = 0.0
+	spawnCool.reset()
+	currArm = 0
+	angle = 0.0
+	_emitted = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawnCool = TimedCount.new(1.0 / data.bulletsPerSec)
